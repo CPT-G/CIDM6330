@@ -1,0 +1,384 @@
+NPS_Information:
+  Metadata_Purpose: CSDGM
+  Metadata_Purpose: NPS
+  Metadata_Purpose: OnlineData
+  Metadata_Purpose: IMInventory
+  NPS_Unit_Information:
+    NPS_Unit_Type: Park
+    NPS_Unit_AlphaCode: VICK
+  NPS_Unit_Information:
+    NPS_Unit_Type: Office
+    NPS_Unit_AlphaCode: GRI
+  NPS_Unit_Information:
+    NPS_Unit_Type: Office
+    NPS_Unit_AlphaCode: GRD
+  Datacat_Information:
+    Datacat_Edit_Date:
+      Single_Date/Time:
+        Calendar_Date: 20210520
+  Data_Store_Information:
+    Data_Steward:
+      Contact_Information:
+        Contact_Person_Primary:
+          Contact_Person: Stephanie O'Meara
+          Contact_Organization: Colorado State University
+        Contact_Position: Research Associate, Geologist/GIS Specialist/Data Manager
+        Contact_Address:
+          Address_Type: mailing and physical address
+          Address: 1201 Oak Ridge Drive, Suite 200
+          City: Fort Collins
+          State_or_Province: Colorado
+          Postal_Code: 80525
+          Country: USA
+        Contact_Voice_Telephone: (970) 491-6655
+        Contact_Electronic_Mail_Address: stephanie_o'meara@partner.nps.gov
+        Hours_of_Service: 9:00 a.m. to 5:00 p.m. (MST), Monday - Friday
+    Data_Category: Geology
+    Data_Site: NR-GIS  
+Identification_Information:
+  Citation:
+    Citation_Information:
+      Originator: National Park Service (NPS) Geologic Resources Inventory (GRI) program
+      Publication_Date: 20210520
+      Title: Digital Geologic-GIS Map of the Vicksburg West Quadrangle, Mississippi and Louisiana (NPS, GRD, GRI, VICK, VIWE digital map) adapted from a Mississippi State University, Department of Geosciences unpublished map and GIS data map by Smith and Schmitz (2016)
+      Edition: 1st
+      Geospatial_Data_Presentation_Form: map
+  Description:
+    Abstract: The Digital Geologic-GIS Map of the Vicksburg West Quadrangle, Mississippi and Louisiana is composed of GIS data layers and GIS tables, and is available in the following GRI-supported GIS data formats: 1.) a 10.1 file geodatabase (viwe_geology.gdb), and a 2.) Open Geospatial Consortium (OGC) geopackage. The file geodatabase format is supported with a 1.) ArcGIS Pro map file (.mapx) file (viwe_geology.mapx) and individual Pro layer (.lyrx) files (for each GIS data layer), as well as with a 2.) 10.1 ArcMap (.mxd) map document (viwe_geology.mxd) and individual 10.1 layer (.lyr) files (for each GIS data layer). Upon request, the GIS data is also available in ESRI 10.1 shapefile format. Contact Stephanie O'Meara (see contact information below) to acquire the GIS data in these GIS data formats. In addition to the GIS data and supporting GIS files, three additional files comprise a GRI digital geologic-GIS dataset or map: 1.) A GIS readme file (vick_geology_gis_readme.pdf), 2.) the GRI ancillary map information document (.pdf) file (vick_geology.pdf) which contains geologic unit descriptions, as well as other ancillary map information and graphics from the source map(s) used by the GRI in the production of the GRI digital geologic-GIS data for the park, and 3.) a user-friendly FAQ PDF version of the metadata (viwe_geology_metadata_faq.pdf). Please read the vick_geology_gis_readme.pdf for information pertaining to the proper extraction of the GIS data and other map files. QGIS software is available for free at: https://www.qgis.org/en/site/. The data were completed as a component of the Geologic Resources Inventory (GRI) program, a National Park Service (NPS) Inventory and Monitoring (I&M) Division funded program that is administered by the NPS Geologic Resources Division (GRD). For a complete listing of GRI products visit the GRI publications webpage: For a complete listing of GRI products visit the GRI publications webpage: https://www.nps.gov/subjects/geology/geologic-resources-inventory-products.htm. For more information about the Geologic Resources Inventory Program visit the GRI webpage: https://www.nps.gov/subjects/geology/gri,htm. At the bottom of that webpage is a "Contact Us" link if you need additional information. You may also directly contact the program coordinator, Jason Kenworthy (jason_kenworthy@nps.gov). Source geologic maps and data used to complete this GRI digital dataset were provided by the following: Mississippi State University, Department of Geosciences. Detailed information concerning the sources used and their contribution the GRI product are listed in the Source Citation section(s) of this metadata record (viwe_geology_metadata.txt or viwe_geology_metadata_faq.pdf). Users of this data are cautioned about the locational accuracy of features within this dataset. Based on the source map scale of 1:24,000 and United States National Map Accuracy Standards features are within (horizontally) 12.2 meters or 40 feet of their actual location as presented by this dataset. Users of this data should thus not assume the location of features is exactly where they are portrayed in ArcGIS, QGIS or other software used to display this dataset. All GIS and ancillary tables were produced as per the NPS GRI Geology-GIS Geodatabase Data Model v. 2.3. (available at: https://www.nps.gov/articles/gri-geodatabase-model.htm).
+    Purpose: The data are intended to assist NPS personnel in the protection and management of Vicksburg National Military Park.
+    Supplemental_Information: The data layers (feature classes) that comprise the Digital Geologic-GIS Map of the Vicksburg West Quadrangle, Mississippi and Louisiana include: Geologic Units (VIWEGLG), Geologic Contacts (VIWEGLGA), Surficial Units (VIWESUR), Surficial Contacts (VIWESURA) and Geologic Sample Localities (VIWEGSL). In addition to the data layers, there are three GIS tables, the Geologic Unit Information Table (vickunit) Table, the short-version of the Geologic Unit Information Table (vickunit_short) Table, and the Source Map Information Table (vickmap) Table. Refer to the NPS GRI Geology-GIS Geodatabase Data Model v. 2.3 (available at: https://www.nps.gov/articles/gri-geodatabase-model.htm) for detailed data layer (feature class) and table specifications including attribute field parameters, definitions and domains, and implemented topology rules and relationship classes. The GIS data projection is NAD83, UTM Zone 15N.
+  Time_Period_of_Content:
+    Time_Period_Information:
+      Single_Date/Time:
+        Calendar_Date: 20210520
+    Currentness_Reference: ground condition
+  Status:
+    Progress: Complete
+    Maintenance_and_Update_Frequency: None planned
+  Spatial_Domain:
+    Bounding_Coordinates:
+      West_Bounding_Coordinate: -91.0000001305
+      East_Bounding_Coordinate: -90.8750000006
+      North_Bounding_Coordinate: 32.3750016999
+      South_Bounding_Coordinate: 32.2500000006
+  Keywords:
+    Theme:
+      Theme_Keyword_Thesaurus: none
+      Theme_Keyword: Vicksburg National Military Park
+      Theme_Keyword: VICK
+      Theme_Keyword: Mississippi
+      Theme_Keyword: Louisiana
+      Theme_Keyword: digital data
+      Theme_Keyword: GIS data
+      Theme_Keyword: geodatabase
+      Theme_Keyword: file geodatabase
+      Theme_Keyword: ArcGIS
+      Theme_Keyword: ArcGIS Pro
+      Theme_Keyword: ArcMap Document
+      Theme_Keyword: ArcGIS Pro Map File
+      Theme_Keyword: Open Geospatial Consortium
+      Theme_Keyword: OGC
+      Theme_Keyword: geopackage
+      Theme_Keyword: QGIS
+      Theme_Keyword: GPKG
+      Theme_Keyword: geology
+      Theme_Keyword: digital geologic map
+      Theme_Keyword: digital geologic-GIS map
+      Theme_Keyword: geologic map
+      Theme_Keyword: geologic-GIS map
+      Theme_Keyword: Geology Help Map Document
+      Theme_Keyword: geologic unit descriptions
+      Theme_Keyword: geologic units
+      Theme_Keyword: Geologic Unit Information Table
+      Theme_Keyword: UNIT table
+      Theme_Keyword: Source Map Information Table
+      Theme_Keyword: MAP table
+      Theme_Keyword: source geologic maps
+      Theme_Keyword: source maps
+      Theme_Keyword: Geologic Units (VIWEGLG)
+      Theme_Keyword: Geologic Contacts (VIWEGLGA)
+      Theme_Keyword: Surficial Units (VIWESUR)
+      Theme_Keyword: Surficial Contacts (VIWESURA)
+      Theme_Keyword: Geologic Sample Localities (VIWEGSL)
+      Theme_Keyword: National Park Service
+      Theme_Keyword: NPS
+      Theme_Keyword: Geologic Resources Division
+      Theme_Keyword: GRD
+      Theme_Keyword: Geologic Resources Inventory
+      Theme_Keyword: GRI
+      Theme_Keyword: Geologic Resource Evaluation
+      Theme_Keyword: GRE
+    Place:
+      Place_Keyword_Thesaurus: none
+      Place_Keyword: Vicksburg National Military Park
+      Place_Keyword: VICK
+      Place_Keyword: Mississippi
+      Place_Keyword: Louisiana
+      Place_Keyword: Vicksburg West Quadrangle
+      Place_Keyword: United States
+      Place_Keyword: US
+      Place_Keyword: USA
+      Place_Keyword: North America
+    Place:
+      Place_Keyword_Thesaurus: National Park System Unit Code Thesaurus
+      Place_Keyword: VICK
+      Place_Keyword: GRD
+      Place_Keyword: GRI
+    Place:
+      Place_Keyword_Thesaurus: National Park System Unit Name Thesaurus
+      Place_Keyword: Vicksburg National Military Park
+      Place_Keyword: Geologic Resources Division
+      Place_Keyword: Geologic Resources Inventory
+    Theme:
+      Theme_Keyword_Thesaurus: National Park Service Theme Category Thesaurus
+      Theme_Keyword: Geology
+    Theme:
+      Theme_Keyword_Thesaurus: ISO 19115 Topic Category
+      Theme_Keyword: Environment
+      Theme_Keyword: Geoscientific Information
+  Access_Constraints: None
+  Use_Constraints: Not for use at scale greater than 1:24,000 (source map scale). Users of this data are cautioned about the locational accuracy of features within this dataset. Based on the source map scale and United States National Map Accuracy Standards features are within (horizontally) 12.2 meters or 40 feet of their actual location as presented by this dataset. Users of this data should thus not assume the location of features is exactly where they are portrayed in Google Earth, ArcGIS or other software used to display this dataset.
+  Point_of_Contact:
+    Contact_Information:
+      Contact_Person_Primary:
+        Contact_Person: Stephanie O'Meara
+        Contact_Organization: Colorado State University
+      Contact_Position: Research Associate, Geologist/GIS Specialist/Data Manager
+      Contact_Address:
+        Address_Type: mailing and physical address
+        Address: 1201 Oak Ridge Drive, Suite 200
+        City: Fort Collins
+        State_or_Province: Colorado
+        Postal_Code: 80525
+        Country: USA
+      Contact_Voice_Telephone: (970) 491-6655
+      Contact_Electronic_Mail_Address: stephanie_o'meara@partner.nps.gov
+      Hours_of_Service: 9:00 a.m. to 5:00 p.m. (MST), Monday - Friday
+  Data_Set_Credit: Stephanie O'Meara and James Winter (Colorado State University)
+  Native_Data_Set_Environment: ESRI ArcGIS 10.1 and Microsoft Windows 7
+  Cross_Reference:
+    Citation_Information:
+      Originator: National Park Service Geologic Resources Inventory (GRI) program
+      Publication_Date: 20210520
+      Title: Metadata for the Digital Geologic-GIS Map of the Vicksburg West Quadrangle, Mississippi and Louisiana (NPS, GRD, GRI, VICK, VIWE digital map)
+      Edition: 1st
+      Geospatial_Data_Presentation_Form: document
+Data_Quality_Information:
+  Attribute_Accuracy:
+    Attribute_Accuracy_Report: Feature and table attribution was derived and checked with the source map(s). Attribution was checked (QCd) for errors. Users of this data are advised to FULLY and CAREFULLY READ the "DISTRIBUTION LIABILITY" section of this metadata before using the data.
+  Logical_Consistency_Report: GIS data in 10.1 file geodatabase and QGC geopackage file formats.
+  Completeness_Report: All data is considered complete to the extent of the source map(s).
+  Positional_Accuracy:
+    Horizontal_Positional_Accuracy:
+      Horizontal_Positional_Accuracy_Report: Data was produced from digital source data and digitized from a georeferenced source map .TIF image(s) (300dpi). Users of this data are cautioned about the locational accuracy of features within this dataset. Based on the source map scale and United States National Map Accuracy Standards features are within (horizontally) 12.2 meters or 40 feet of their actual location as presented by this dataset. Users of this data should thus not assume the location of features is exactly where they portrayed are in ArcGIS or other software used to display this dataset. The PRECISION of any Shapefile (.shp) files is DOUBLE. Coordinate tics on the georeferenced (registered and rectified) source map image(s) were checked against control points that had the exact specified coordinates of the tic. The direct distance between the image tic and its control point were measured. All measured distances were less than 50% of the required distance to meet National Map Accuracy Standards (1/50th of an inch for maps at 1:20,000 scale and smaller). Features were checked (QCd) after digitizing for positional accuracy errors using the georeferenced source map image.
+  Lineage:
+    Source_Information:
+      Source_Citation:
+        Citation_Information:
+          Originator: Smith, Taryn  E., and Schmitz, Darrel W.
+          Publication_Date: 2016
+          Title: Geologic  Map of the Vicksburg West Quadrangle, Warren County, Mississippi and Madison Parish, Louisiana
+          Edition: 1st
+          Geospatial_Data_Presentation_Form: map
+          Series_Information:
+            Series_Name: unpublished map and GIS data
+            Issue_Identification: (Vicksburg West Quadrangle)
+          Publication_Information:
+            Publication_Place: Mississippi State, Mississippi
+            Publisher: Mississippi State University, Department of Geosciences
+      Source_Scale_Denominator: 24000
+      Type_of_Source_Media: digital data and image
+      Source_Time_Period_of_Content:
+        Time_Period_Information:
+          Single_Date/Time:
+            Calendar_Date: 2016
+        Source_Currentness_Reference: publication date
+      Source_Citation_Abbreviation: MSU unpublished map and GIS data (Vicksburg West Quadrangle)
+      Source_Contribution: Geologic features were derived from source digital data. In addition, geologic features not present with the digital data were digitized using a TIF image of the source map georeferenced in NAD83 UTM. The source map image was also used to attribute features, as well as to check (QC) line quality, both positionally and spatially, and feature attribution. Ancillary source map text, including unit descriptions, and graphics, if present, were captured, formatted and added to the ancillary map information document. See the Process Step section for additional information.
+    Process_Step:
+      Process_Description: 1.) GIS features were produced from source digital data or digitized from a source map. See the Source Information Contribution section(s) for specific source map details. GIS features converted from source digital data were imported into a GRI data model compliant geodatabase. For details on the GRI data model see the NPS GRI Geology-GIS Geodatabase Data Model v. 2.3 (available at: https://www.nps.gov/articles/gri-geodatabase-model.htm). GIS features captured from a source map were digitized from a TIF image of the map georeferenced in NAD83 UTM. 2.) Line quality of digitized features was checked against the source scan to ensure that GIS features were represented accurately, both positionally and spatially. Line quality of digital data was checked and if warranted edited to ensure good quality linework. 3.) Feature attribution was derived for all features using the source data attribution and the source printed/plotted map if available. 4.) Data Model topology rules were validated on all features and any topology errors corrected. 5.) Quality control (QC) consisted of checking features and their attribution against the source digital data, as well as against the source printed/plotted map if available. A GRI developed ArcObjects tool was run to check for GRI data model validation and feature-related consistency. 6.) The UNIT and MAP tables were populated and checked against the source(s). Relationship classes were also added and used to ensure attribution consistency between feature class and table attribution. 7.) Feature symbology was produced for all feature classes. An attempt was made to best match symbology to its source map, however, in some cases features symbology maybe slightly modified, primarily based on the limitations of the ArcGIS geology styles. In some cases, however, symbology may have been modified to reconcile differences from multiple sources. 8.) An ArcMap Document was produced, in part by a GRI finalize mxd tool, and layer (.lyr) files saved for all data layers. 9.) The ancillary map information PDF document, see the Supplemental Information section for additional information, was produced from textual information and figures present on the source map(s) and/or in digital data files. If applicable, source map images were produced at 150dpi or greater resolution and optical character recognition (OCR) software was used to produce text from source map text. The text, source map images and other ancillary source map information were added to a Help & Manual (.hmxz) template file. The .hmxz file was then compiled to produce the ancillary map information document. Any compilation errors were then checked and corrected and the document was reviewed for content, usability and grammatical errors. 10.) A OGC GeoPackage was produced from the finalized file geodatabase.
+      Source_Used_Citation_Abbreviation: MSU unpublished map and GIS data (Vicksburg West Quadrangle)
+      Process_Date: 20210520
+      Process_Contact:
+        Contact_Information:
+          Contact_Person_Primary:
+            Contact_Person: Stephanie O'Meara
+            Contact_Organization: Colorado State University
+          Contact_Position: Research Associate, Geologist/GIS Specialist/Data Manager
+          Contact_Address:
+            Address_Type: mailing address
+            Address: 1201 Oak Ridge Drive, Suite 200
+            City: Fort Collins
+            State_or_Province: Colorado
+            Postal_Code: 80525-5589
+            Country: USA
+          Contact_Voice_Telephone: (970) 491-6655
+          Contact_Electronic_Mail_Address: stephanie.omeara@colostate.edu
+          Hours_of_Service: 9:00 a.m. to 5:00 p.m. (MST), Monday - Friday
+Spatial_Reference_Information:
+  Horizontal_Coordinate_System_Definition:
+    Coordinate_System_Name:
+      Geographic_Coordinate_System_Name: GCS_North_American_1983
+      Projected_Coordinate_System_Name: NAD_1983_UTM_Zone_15N
+    Planar:
+      Grid_Coordinate_System:
+        Grid_Coordinate_System_Name: Universal Transverse Mercator
+        Universal_Transverse_Mercator:
+          UTM_Zone_Number: 15
+          Transverse_Mercator:
+            Scale_Factor_at_Central_Meridian: 0.999600
+            Longitude_of_Central_Meridian: -93.0
+            Latitude_of_Projection_Origin: 0.000000
+            False_Easting: 500000.000000
+            False_Northing: 0.000000
+      Planar_Coordinate_Information:
+        Planar_Coordinate_Encoding_Method: coordinate pair
+        Planar_Distance_Units: meters
+        Coordinate_Representation:
+          Abscissa_Resolution: 0.000007
+          Ordinate_Resolution: 0.000007
+    Geodetic_Model:
+      Horizontal_Datum_Name: North American Datum of 1983
+      Ellipsoid_Name: Geodetic Reference System 80
+      Semi-major_Axis: 6378137.000000
+      Denominator_of_Flattening_Ratio: 298.257222
+Entity_and_Attribute_Information:
+  Overview_Description:
+    Entity_and_Attribute_Overview: Refer to the NPS GRI Geology-GIS Geodatabase Data Model v. 2.3 (available at: https://www.nps.gov/articles/gri-geodatabase-model.htm) for detailed feature class and table attribute field parameters, definitions and domains, and implemented relationship classes, as well as for implemented feature class topology rules.
+    Entity_and_Attribute_Detail_Citation: NPS GRI Geology-GIS Geodatabase Data Model v. 2.3. (available at: https://www.nps.gov/articles/gri-geodatabase-model.htm)
+Distribution_Information:
+  Distributor:
+    Contact_Information:
+      Contact_Person_Primary:
+        Contact_Person: Stephanie O'Meara
+        Contact_Organization: Colorado State University
+      Contact_Position: Research Associate, Geologist/GIS Specialist/Data Manager
+      Contact_Address:
+        Address_Type: mailing and physical address
+        Address: 1201 Oak Ridge Drive, Suite 200
+        City: Fort Collins
+        State_or_Province: Colorado
+        Postal_Code: 80525
+        Country: USA
+      Contact_Voice_Telephone: (970) 491-6655
+      Contact_Electronic_Mail_Address: stephanie_o'meara@partner.nps.gov
+      Hours_of_Service: 8:00 a.m. to 4:00 p.m. (MST), Monday - Friday
+      Contact_Instructions: GRI data are available at: http://irma.nps.gov/App/Reference/Search
+  Resource_Description: GIS map data available in several GRI-supported GIS data formats
+  Distribution_Liability:
+    The National Park Service shall not be held liable for improper or incorrect use of the data described and/or contained herein. These data and related graphics are not legal documents and are not intended to be used as such.
+
+    The information contained in these data is dynamic and may change over time. The data are not better than the original sources from which they were derived. It is the responsibility of the data user to use the data appropriately and consistent within the limitations of geospatial data in general and these data in particular. The related graphics are intended to aid the data user in acquiring relevant data; it is not appropriate to use the related graphics as data.
+
+    The National Park Service gives no warranty, expressed or implied, as to the accuracy, reliability, or completeness of these data. It is strongly recommended that these data are directly acquired from an NPS server and not indirectly through other sources which may have changed the data in some way. Although these data have been processed successfully on a computer system at the National Park Service, no warranty, expressed or implied is made regarding the utility of the data on another system or for general scientific purposes, nor shall the act of distribution constitute any such warranty. This disclaimer applies to both to individual use of the data and aggregate use with other data.
+  Standard_Order_Process:
+    Digital_Form:
+      Digital_Transfer_Information:
+        Format_Name: GDB
+        Format_Version_Number: ArcGIS Pro 2.4
+        Format_Specification: GIS (file geodatabase format) data package with a Pro map (.mapx) file (viwe_geology_gdb_pro.zip)
+        File_Decompression_Technique: Compression applied
+        Transfer_Size: 4.16
+      Digital_Transfer_Option:
+        Online_Option:
+          Computer_Contact_Information:
+            Network_Address:
+              Network_Resource_Name: NPS Data Store, https://irma.nps.gov/DataStore/
+          Access_Instructions: Search for the GRI map, then download the GIS (file geodatabase format) data package with a Pro map (.mapx) file (viwe_geology_gdb_pro.zip)
+    Digital_Form:
+      Digital_Transfer_Information:
+        Format_Name: GDB
+        Format_Version_Number: ArcGIS 10.1
+        Format_Specification: GIS (file geodatabase format) data package with an ArcMap map document (.mxd) file (viwe_geology_gdb.zip)
+        File_Decompression_Technique: Compression applied
+        Transfer_Size: 4.19
+      Digital_Transfer_Option:
+        Online_Option:
+          Computer_Contact_Information:
+            Network_Address:
+              Network_Resource_Name: NPS Data Store, https://irma.nps.gov/DataStore/
+          Access_Instructions: Search for the GRI map, then download the GIS (file geodatabase format) data package with an ArcMap map document (.mxd) file (viwe_geology_gdb.zip)
+    Digital_Form:
+      Digital_Transfer_Information:
+        Format_Name: GPKG
+        Format_Version_Number: OGC geopackage
+        Format_Specification: GIS (geopackage format) data package (viwe_geology_gpkg.zip)
+        File_Decompression_Technique: Compression applied
+        Transfer_Size: 4.68
+      Digital_Transfer_Option:
+        Online_Option:
+          Computer_Contact_Information:
+            Network_Address:
+              Network_Resource_Name: NPS Data Store, https://irma.nps.gov/DataStore/
+          Access_Instructions: Search for the GRI map, then download the GIS (geopackage format) data package (viwe_geology_gpkg.zip)
+    Digital_Form:
+      Digital_Transfer_Information:
+        Format_Name: PDF
+        Format_Version_Number: 9
+        Format_Specification: Ancillary Map Information Document
+        File_Decompression_Technique: Compression not applied
+        Transfer_Size: 0.83
+      Digital_Transfer_Option:
+        Online_Option:
+          Computer_Contact_Information:
+            Network_Address:
+              Network_Resource_Name: NPS Data Store, https://irma.nps.gov/DataStore/
+          Access_Instructions: Search for the GRI map, then download the Ancillary Map Information document (vick_geology.pdf)
+    Digital_Form:
+      Digital_Transfer_Information:
+        Format_Name: PDF
+        Format_Version_Number: 9
+        Format_Specification: GIS Readme Document
+        File_Decompression_Technique: Compression not applied
+        Transfer_Size: 0.1
+      Digital_Transfer_Option:
+        Online_Option:
+          Computer_Contact_Information:
+            Network_Address:
+              Network_Resource_Name: NPS Data Store, https://irma.nps.gov/DataStore/
+          Access_Instructions: Search for the GRI map, then download the GIS Readme document (vick_geology_gis_readme.pdf)
+    Digital_Form:
+      Digital_Transfer_Information:
+        Format_Name: PDF
+        Format_Version_Number: 9
+        Format_Specification: FAQ Metadata File
+        File_Decompression_Technique: Compression not applied
+        Transfer_Size: 0.1
+      Digital_Transfer_Option:
+        Online_Option:
+          Computer_Contact_Information:
+            Network_Address:
+              Network_Resource_Name: NPS Data Store, https://irma.nps.gov/DataStore/
+          Access_Instructions: Search for the GRI map, then download the FAQ Metadata file (viwe_geology_metadata_faq.pdf)
+    Fees: None
+    Ordering_Instructions: Search for the GRI map, then download the GRI data at: https://irma.nps.gov/DataStore/
+  Available_Time_Period:
+    Time_Period_Information:
+      Single_Date/Time:
+        Calendar_Date: 20210520
+Metadata_Reference_Information:
+  Metadata_Date: 20210520
+  Metadata_Contact:
+    Contact_Information:
+      Contact_Person_Primary:
+        Contact_Person: Stephanie O'Meara
+        Contact_Organization: Colorado State University
+      Contact_Position: Research Associate, Geologist/GIS Specialist/Data Manager
+      Contact_Address:
+        Address_Type: mailing and physical address
+        Address: 1201 Oak Ridge Drive, Suite 200
+        City: Fort Collins
+        State_or_Province: Colorado
+        Postal_Code: 80525-5589
+        Country: USA
+      Contact_Voice_Telephone: (970) 491-6655
+      Contact_Electronic_Mail_Address: stephanie.omeara@colostate.edu
+      Hours_of_Service: 9:00 a.m. to 5:00 p.m. (MST), Monday - Friday
+  Metadata_Standard_Name: FGDC Content Standards for Digital Geospatial Metadata
+  Metadata_Standard_Version: FGDC-STD-001-1998
+  Metadata_Time_Convention: local time
+  Metadata_Access_Constraints: None
+  Metadata_Use_Constraints: None
+  Metadata_Extensions:
+    Online_Linkage: http://www.fgdc.gov/standards/
+    Profile_Name: FGDC Geospatial Metadata Standards
