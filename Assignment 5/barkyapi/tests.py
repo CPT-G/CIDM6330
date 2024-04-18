@@ -3,9 +3,9 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework import routers
 from rest_framework.test import APIRequestFactory, APITestCase
-
 from .models import Bookmark
 from .views import BookmarkViewSet
+from django.utils import timezone
 
 # Create your tests here.
 # test plan
@@ -192,8 +192,48 @@ def snippet_list(request):
 # 17. list bookmarks by user
 # 18. list snippets by user
 # 20. list bookmarks by date
+    def test_list_bookmarks_by_date(self):
+        """
+        List bookmarks by date
+        """
+        Bookmark.objects.create(title="Google", url="https://google.com/",
+                                date_added=timezone.now() - timezone.timedelta(days=2))
+        Bookmark.objects.create(title="Yahoo", url="https://yahoo.com/",
+                                date_added=timezone.now() - timezone.timedelta(days=1))
+
+        response = self.client.get(self.list_url + "?ordering=date_added")
+
+        self.assertTrue(status.is_success(response.status_code))
+
+        data = response.json()
+
+        self.assertLessEqual(
+            data["results"][0]["date_added"], data["results"][1]["date_added"])
+        self.assertLessEqual(
+            data["results"][1]["date_added"], data["results"][2]["date_added"])
+
 # 21. list snippets by date
 # 23. list bookmarks by title
+    def test_list_bookmarks_by_title(self):
+        """
+        List bookmarks created by title
+        """
+        Bookmark.objects.create(title="Google", url="https://google.com/")
+        Bookmark.objects.create(title="Yahoo", url="https://yahoo.com/")
+        response = self.client.get(self.list_url + "?ordering=title")
+
+        self.assertTrue(status.is_success(response.status_code))
+        self.assertEqual(response.data["results"][1]["title"], "Google")
+        self.assertEqual(response.data["results"][2]["title"], "Yahoo")
+
 # 24. list snippets by title
 # 26. list bookmarks by url
+    def test_bookmarks_url(self):
+        """
+        Ensure bookmars url is pointing to correct place
+        """
+        url = reverse('barkyapi:bookmark-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
 # 27. list snippets by url
