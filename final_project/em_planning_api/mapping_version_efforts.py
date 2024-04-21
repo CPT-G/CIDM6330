@@ -1,5 +1,5 @@
-""" Attempt 1
-
+# Attempt 1
+"""
 import matplotlib
 import matplotlib.pyplot as plt
 import geopandas as gpd
@@ -37,11 +37,12 @@ plt.show()
 
 f = px.choropleth(df_em_data, locationmode="country names",
                   locations=df_em_data['country'], scope='louisiana', color=df_em_data['country'])
-f.show()"""
+f.show()
+"""
 
 
-"""Attempt 2
-
+# Attempt 2
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -160,12 +161,15 @@ def statePlot(st, data, cmap, zoom, dpi):
 
 statePlot('LA', 'ALAND_miles', 'summer', 5, 200)
 
-statePlot('LA', 'ALAND_miles', 'summer', 9, 300)"""
+statePlot('LA', 'ALAND_miles', 'summer', 9, 300)
+"""
 
+
+# Attempt 3
+"""
 from operator import itemgetter
 from geopandas import GeoDataFrame
 from shapely.geometry import Point
-Attempt 3
 
 
 path = "C:/Users/jpgan/OneDrive/Desktop/WTAMU/00.Code/MSCISBA/CIDM6330/final_project/gov_mapping_data/tl_2023_us_state/tl_2023_us_state.shp"
@@ -193,3 +197,67 @@ geo_df.plot(ax=ax, markersize=20, color='blue',
             marker='o', label='Emission')
 plt.legend()
 plt.show()
+"""
+
+
+# Attempt 4
+"""
+import numpy as np
+import pandas as pd
+import geopandas as gpd
+from shapely.geometry import Point
+import matplotlib.pyplot as plt
+from matplotlib import cm
+
+
+dataset = pd.read_csv("em_data_test.csv")
+
+latitudes_fm = dataset.loc[:, 'Lat_FM']
+longitudes_fm = dataset.loc[:, "Long_FM"]
+latitudes_tacsat = dataset.loc[:, 'Lat_TACSAT']
+longitudes_tacsat = dataset.loc[:, "Long_TACSAT"]
+latitudes_jcr = dataset.loc[:, 'Lat_JCR']
+longitudes_jcr = dataset.loc[:, "Long_JCR"]
+latitudes_wifi = dataset.loc[:, 'Lat_WiFi']
+longitudes_wifi = dataset.loc[:, "Long_WiFi"]
+
+
+min_latitude = latitudes_fm.min()
+max_latitude = latitudes_fm.max()
+min_longitude = longitudes_fm.min()
+max_longitude = longitudes_fm.max()
+
+data_points_fm = [Point(xy) for xy in zip(longitudes_fm, latitudes_fm)]
+data_points_tacsat = [Point(xy)
+                      for xy in zip(longitudes_tacsat, latitudes_tacsat)]
+data_points_jcr = [Point(xy) for xy in zip(longitudes_jcr, latitudes_jcr)]
+data_points_wifi = [Point(xy) for xy in zip(longitudes_wifi, latitudes_wifi)]
+
+
+world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+ax = world.plot(color='grey', figsize=(16, 11))
+
+
+geo_df = gpd.GeoDataFrame(
+    dataset, crs={'init': 'epsg:4326'}, geometry=data_points_fm)
+geo_df.plot(markersize=10, color='red', ax=ax)
+geo_df = gpd.GeoDataFrame(
+    dataset, crs={'init': 'epsg:4326'}, geometry=data_points_tacsat)
+geo_df.plot(markersize=10, color='blue', ax=ax)
+geo_df = gpd.GeoDataFrame(
+    dataset, crs={'init': 'epsg:4326'}, geometry=data_points_jcr)
+geo_df.plot(markersize=10, color='green', ax=ax)
+geo_df = gpd.GeoDataFrame(
+    dataset, crs={'init': 'epsg:4326'}, geometry=data_points_wifi)
+geo_df.plot(markersize=10, color='purple', ax=ax)
+
+ax.axis('on')
+ax.set_xlim(min_longitude - 0.003, max_longitude + 0.003)
+ax.set_ylim(min_latitude - 0.003, max_latitude + 0.003)
+
+
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.title('EM Emissions')
+plt.show()
+"""

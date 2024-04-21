@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 
 
-dataset = pd.read_csv("em_data.csv")
+dataset = pd.read_csv("em_data_mapping.csv")
 
 latitudes = dataset.loc[:, 'Lat']
 longitudes = dataset.loc[:, "Long"]
@@ -20,15 +20,18 @@ data_points = [Point(xy) for xy in zip(longitudes, latitudes)]
 
 
 world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-ax = world.plot(color='lightgrey', linewidth=0.5,
-                edgecolor='black', figsize=(20, 12))
+ax = world.plot(color='grey', figsize=(16, 11))
+
 
 geo_df = gpd.GeoDataFrame(
     dataset, crs={'init': 'epsg:4326'}, geometry=data_points)
 geo_df.plot(markersize=10, color='red', ax=ax)
 
-ax.axis('off')
-ax.set_xlim(min_longitude - 0.01, max_longitude + 0.01)
-ax.set_ylim(min_latitude - 0.01, max_latitude + 0.01)
+ax.axis('on')
+ax.set_xlim(min_longitude - 0.003, max_longitude + 0.003)
+ax.set_ylim(min_latitude - 0.003, max_latitude + 0.003)
 
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.title('EM Emissions')
 plt.show()
