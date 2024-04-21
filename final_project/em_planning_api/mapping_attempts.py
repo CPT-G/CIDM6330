@@ -162,14 +162,11 @@ statePlot('LA', 'ALAND_miles', 'summer', 5, 200)
 
 statePlot('LA', 'ALAND_miles', 'summer', 9, 300)"""
 
-"""Attempt 3
-
-import pandas as pd
-import geopandas as gpd
-from shapely.geometry import Point
-import matplotlib.pyplot as plt
-from geopandas import GeoDataFrame
 from operator import itemgetter
+from geopandas import GeoDataFrame
+from shapely.geometry import Point
+Attempt 3
+
 
 path = "C:/Users/jpgan/OneDrive/Desktop/WTAMU/00.Code/MSCISBA/CIDM6330/final_project/gov_mapping_data/tl_2023_us_state/tl_2023_us_state.shp"
 df = gpd.read_file(path)
@@ -195,4 +192,4 @@ geo_df.head()
 geo_df.plot(ax=ax, markersize=20, color='blue',
             marker='o', label='Emission')
 plt.legend()
-plt.show()"""
+plt.show()
