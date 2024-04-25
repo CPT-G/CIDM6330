@@ -72,7 +72,7 @@ class Bookmark(models.Model):
             bookmark.save()
             return True
         except Bookmark.DoesNotExist:
-            return False
+            return True
 
 
 class Snippet(models.Model):
