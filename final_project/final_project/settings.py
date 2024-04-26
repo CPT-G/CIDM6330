@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd party
     'channels',
-
-    'rest_framework',  # REST API
+    # additional django specific
+    'django_matplotlib',
+    # REST API
+    'rest_framework',
     # local
     'em_planning',
 ]
@@ -126,6 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
+STATIC_ROOT = Path.joinpath(BASE_DIR, 'static/')
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
