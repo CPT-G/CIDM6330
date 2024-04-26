@@ -12,9 +12,9 @@ import os
 # from channels.routing import ChannelNameRouter, ProtocolTypeRouter
 from django.core.asgi import get_asgi_application
 
-# from barkyapi import consumers
+# from em_planning_api import consumers
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'final_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dj_em_planning.settings')
 
 application = get_asgi_application()
 
@@ -22,7 +22,7 @@ application = get_asgi_application()
 
 # application = ProtocolTypeRouter(
 #     {
-#         "http": barky_asgi_app,
+#         "http": em_planning_asgi_app,
 #         "channel": ChannelNameRouter(
 #             {
 #                 "bookmarks-add": consumers.SimpleBookmarkConsumer.as_asgi(),

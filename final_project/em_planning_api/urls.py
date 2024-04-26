@@ -10,7 +10,7 @@ from . import views
 # router.register(r"learningpath", views.LearningPathViewSet)
 # router.register(r"users", views.UserViewSet)
 
-app_name = "api"
+app_name = "em_planning_api"
 
 urlpatterns = [
     path('', views.getData),

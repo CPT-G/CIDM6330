@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,13 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd party
-    'channels',
-    # additional django specific
-    'django_matplotlib',
-    # REST API
-    'rest_framework',
+    'channels',  # Channels
+    'rest_framework',  # REST API
+    'django_matplotlib',  # Django matplotlib
     # local
-    'em_planning',
+    'em_planning_api.apps.EMPlanningApiConfig',
+    'em_planning_arch.apps.EMPlanningArchConfig',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'final_project.urls'
+ROOT_URLCONF = 'dj_em_planning.urls'
 
 TEMPLATES = [
     {
@@ -79,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'final_project.wsgi.application'
+WSGI_APPLICATION = 'dj_em_planning.wsgi.application'
 
 
 # Database
@@ -143,13 +142,13 @@ REST_FRAMEWORK = {
 }
 
 # Channels
-# ASGI_APPLICATION = "djbarky.asgi.application"
+ASGI_APPLICATION = "dj_em_planning.asgi.application"
 # CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#         },
-#     },
-# }
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
