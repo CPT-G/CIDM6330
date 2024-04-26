@@ -1,5 +1,5 @@
 """
-ASGI config for final_project project.
+ASGI config for dj_em_planning project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

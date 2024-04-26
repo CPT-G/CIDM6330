@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from em_planning.models import Item
+from em_planning_arch.models import Item
 from .serializers import ItemSerializer
 
 # from django.shortcuts import render
