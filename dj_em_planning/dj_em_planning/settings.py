@@ -31,9 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 3rd party
     # channels docs recommend adding channels before other apps
-    'daphne',  # ASGI server
+    # 'daphne',  # ASGI server
     # djgano
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,13 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd party
-    'channels',  # Channels
+    # 'channels',  # Channels
     'rest_framework',  # REST API
-    'django_matplotlib',  # Django matplotlib
+    # 'django_matplotlib',  # Django matplotlib
     # local
-    'em_planning_api.models',
-    'em_planning_api.apps.EMPlanningApiConfig',
-    'em_planning_arch.apps.EMPlanningArchConfig',
+    'em_planning_api',
+    'em_planning_arch',
 ]
 
 MIDDLEWARE = [
@@ -128,9 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
-STATIC_ROOT = Path.joinpath(BASE_DIR, 'static/')
-MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media/')
+# MEDIA_URL = 'media/'
+# STATIC_ROOT = Path.joinpath(BASE_DIR, 'static/')
+# MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -1,7 +1,7 @@
 from django.urls import path, include
 # from rest_framework import routers
 
-from . import views
+from em_planning_api import views as api_views
 
 # router = routers.DefaultRouter()
 # router.register(r"bookmarks", views.BookmarkViewSet)
@@ -10,11 +10,15 @@ from . import views
 # router.register(r"learningpath", views.LearningPathViewSet)
 # router.register(r"users", views.UserViewSet)
 
-app_name = "em_planning_api"
+# app_name = "em_planning_api"
 
 urlpatterns = [
-    path('', views.getData),
-    path('add/', views.addItem)
+    # path('', api_views.CustomerView.as_view(), name="customer"),
+    path('customers/', api_views.CustomerView.as_view(), name="customer"),
+    path('customers/<int:pk>/', api_views.CustomerDetailView.as_view(),
+         name="customer-detail")
+    # path('', views.getData),
+    # path('add/', views.addItem)
     # path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     # path("", include(router.urls)),
 ]
