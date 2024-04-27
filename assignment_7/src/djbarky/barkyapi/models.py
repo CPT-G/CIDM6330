@@ -36,6 +36,8 @@ class Bookmark(models.Model):
             bookmark = Bookmark.objects.get(id=domain_bookmark.id)
         except Bookmark.DoesNotExist:
             bookmark = Bookmark(id=domain_bookmark.id)
+        else:
+            bookmark = Bookmark(id=domain_bookmark.id + 'Updated')
 
         bookmark.id = domain_bookmark.id
         bookmark.title = domain_bookmark.title
@@ -63,7 +65,8 @@ class Snippet(models.Model):
     language = models.CharField(
         choices=LANGUAGE_CHOICES, default="python", max_length=100
     )
-    style = models.CharField(choices=STYLE_CHOICES, default="friendly", max_length=100)
+    style = models.CharField(choices=STYLE_CHOICES,
+                             default="friendly", max_length=100)
     owner = models.ForeignKey(
         "auth.User", related_name="snippets", on_delete=models.CASCADE
     )

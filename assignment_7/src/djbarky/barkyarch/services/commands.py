@@ -1,5 +1,5 @@
 """
-This module utilizes the command pattern - https://en.wikipedia.org/wiki/Command_pattern - to 
+This module utilizes the command pattern - https://en.wikipedia.org/wiki/Command_pattern - to
 specify and implement the business logic layer
 """
 import sys
@@ -8,7 +8,7 @@ from datetime import datetime
 import pytz
 
 import requests
-from django.db import transaction
+from django.db import transaction, DatabaseError
 
 from barkyapi.models import Bookmark
 from barkyarch.domain.model import DomainBookmark
@@ -17,7 +17,8 @@ from barkyarch.domain.model import DomainBookmark
 class Command(ABC):
     @abstractmethod
     def execute(self, data):
-        raise NotImplementedError("A command must implement the execute method")
+        raise NotImplementedError(
+            "A command must implement the execute method")
 
 
 class AddBookmarkCommand(Command):
@@ -26,7 +27,8 @@ class AddBookmarkCommand(Command):
     """
 
     def execute(self, data: DomainBookmark, timestamp=None):
-        bookmark = Bookmark(data.id, data.title, data.url, data.notes, timestamp)
+        bookmark = Bookmark(data.id, data.title, data.url,
+                            data.notes, timestamp)
         bookmark.timestamp = datetime.now(pytz.UTC).isoformat()
 
         # again, we skip the ouw with django's transaction management
@@ -57,7 +59,7 @@ class DeleteBookmarkCommand(Command):
             bookmark.delete()
 
 
-class EditBookmarkCommand(Command):
+class UpdateBookmarkCommand(Command):
     """
     Using the django ORM to update a bookmark
     """
@@ -65,4 +67,12 @@ class EditBookmarkCommand(Command):
     def execute(self, data: DomainBookmark):
         bookmark = Bookmark.update_from_domain(data)
         with transaction.atomic():
-            bookmark.save()
+            print(bookmark)
+        # bookmark.active = True
+        # try:
+        #     with transaction.atomic():
+        #         bookmark.save()
+        # except DatabaseError:
+        #     bookmark.active = False
+        # if bookmark.active:
+        #     pass
