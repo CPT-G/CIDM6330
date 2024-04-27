@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     # 3rd party
     # 'channels',  # Channels
     'rest_framework',  # REST API
-    'rest_framework.authtoken'
+    'rest_authtoken',
+    # 'rest_framework.authtoken'
     # 'django_matplotlib',  # Django matplotlib
     # local
     'em_planning_api',
@@ -51,10 +52,11 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_authtoken.auth.AuthTokenAuthentication',
+    ),
 }
 
 MIDDLEWARE = [
@@ -145,14 +147,20 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 10,
-}
+
+REGISTRATION_ENABLED = True
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication',
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     ],
+# }
 
 # Channels
 ASGI_APPLICATION = "dj_em_planning.asgi.application"
-# CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
+# CHANNEL_LAYERS = {"default": {
+#     "BACKEND": "channels.layers.InMemoryChannelLayer"}}
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
