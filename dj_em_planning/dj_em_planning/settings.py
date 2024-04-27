@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # channels docs recommend adding channels before other apps
     # 'daphne',  # ASGI server
-    # djgano
+    # Djgano
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,11 +43,19 @@ INSTALLED_APPS = [
     # 3rd party
     # 'channels',  # Channels
     'rest_framework',  # REST API
+    'rest_framework.authtoken'
     # 'django_matplotlib',  # Django matplotlib
     # local
     'em_planning_api',
     'em_planning_arch',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,13 +127,15 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # MEDIA_URL = 'media/'
 # STATIC_ROOT = Path.joinpath(BASE_DIR, 'static/')
 # MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media/')
