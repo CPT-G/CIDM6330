@@ -12,8 +12,6 @@ import os
 # from channels.routing import ChannelNameRouter, ProtocolTypeRouter
 from django.core.asgi import get_asgi_application
 
-# from em_planning_api import consumers
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dj_em_planning.settings')
 
 application = get_asgi_application()

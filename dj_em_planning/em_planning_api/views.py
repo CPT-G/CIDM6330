@@ -6,12 +6,11 @@ from em_planning_api.models import Customer
 from em_planning_api.serializers import CustomerSerializer
 from django.shortcuts import render
 from django.http import Http404
-from rest_framework import status
+from rest_framework import status, permissions
 from functools import wraps
 from rest_framework.permissions import IsAuthenticated
 # from .serializers import ItemSerializer
 
-# from django.shortcuts import render
 # from django.contrib.auth.models import User
 # from rest_framework import generics, permissions, renderers, viewsets
 # from rest_framework.decorators import action
@@ -19,9 +18,6 @@ from rest_framework.permissions import IsAuthenticated
 # from .models import Bookmark, Snippet
 # from .permissions import IsOwnerOrReadOnly
 # from .serializers import BookmarkSerializer, SnippetSerializer, UserSerializer
-
-# from .models import LearningPath
-# from api.serializers import UserSerializer, LearningPathSerializer
 
 # Create your views here
 

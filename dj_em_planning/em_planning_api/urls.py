@@ -14,6 +14,8 @@ from rest_framework_simplejwt.views import (
 # router.register(r"learningpath", views.LearningPathViewSet)
 # router.register(r"users", views.UserViewSet)
 
+# localhost:8000/em_planning_api/ (customers/auth/token/etc)
+
 # app_name = "em_planning_api"
 
 urlpatterns = [

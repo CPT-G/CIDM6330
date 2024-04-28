@@ -1,92 +1,72 @@
-# from django.db import models
-
-# # Create your models here.
-
-
-# class EMData(models.Model):
-#     Date = models.DateField(("date"), auto_now=True)
-#     Time = models.DateTimeField(("time"), auto_now=True)
-#     Frequency = models.IntegerField("frequency")
-#     Device = models.CharField(("device"), max_length=6)
-#     Location = models.CharField(("location"), max_length=5)
-#     Grid_1 = models.IntegerField("grid_1")
-#     Grid_2 = models.IntegerField("grid_2")
-#     Lat = models.IntegerField("lat")
-#     Long = models.IntegerField("long")
-#     NearHit = models.BooleanField("nearhit")
-
-#     def __str__(self):
-#         return self.Date
-
-# from django_matplotlib.fields import MatplotlibFigureField
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from em_planning_arch.domain.model import DomainEMData
 # Create your models here.
 
 
-class PublishedManager(models.Manager):
-    def get_queryset(self):
-        return super(PublishedManager, self).get_queryset().filter(status='published')
-
-
-class Customer(models.Model):
-    STATUS_CHOICES = (
-        ('draft', 'Draft'),
-        ('published', 'Published')
-    )
-    GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('I', 'Intersex')
-    )
-
-    title = models.CharField(max_length=250, null=False)
-    name = models.CharField(max_length=250)
-    last_name = models.CharField(max_length=250)
-    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    created_by = models.ForeignKey(
-        User, related_name='created_by',  editable=False, on_delete=models.PROTECT, default=1)
-    created = models.DateTimeField(default=timezone.now)
-    status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default='draft')
-    objects = models.Manager()
-    published = PublishedManager()
-
-    class Meta:
-        verbose_name = "Customer"
-        verbose_name_plural = "Customers"
-
-    def __str__(self):
-        return "{} {}".format(self.name, self.last_name)
-
-    # Customer.objects.filter(status='published')
-    # Customer.published.all()
+class User(models.Model):  # URL users
 
 
 class EMData(models.Model):
-    Date = models.DateField(("date"), auto_now=True)
-    Time = models.DateTimeField(("time"), auto_now=True)
-    Frequency = models.IntegerField("frequency")
-    Device = models.CharField(("device"), max_length=6)
-    Location = models.CharField(("location"), max_length=5)
-    Grid_1 = models.IntegerField("grid_1")
-    Grid_2 = models.IntegerField("grid_2")
-    Lat = models.IntegerField("lat")
-    Long = models.IntegerField("long")
-    NearHit = models.BooleanField("nearhit")
+    """
+    EM Data Model
+    Defines the attributes of our EM Data
+    """
+    date = models.DateField(auto_now=True)
+    time = models.TimeField(auto_now=True)
+    frequency = models.IntegerField()
+    device = models.CharField(max_length=6)
+    location = models.CharField(max_length=5)
+    grid_1 = models.IntegerField()
+    grid_2 = models.IntegerField()
+    lat = models.IntegerField()
+    long = models.IntegerField()
+    nearhit = models.BooleanField()
+    FREQUENCY = (
+        ('fm', 'FM'),
+        ('tacsat', 'TACSAT'),
+        ('jcr', 'JCR'),
+        ('wifi', 'WiFi'),
+    )
+
+    def __str__(self):
+        return f"{self.frequency}"
+
+    class Meta:
+        app_label = "em_planning_api"
 
 
-class Item(models.Model):
-    name = models.CharField(max_length=200)
-    created = models.DateTimeField(auto_now_add=True)
+class LatLongPoints(models.Model):  # x and y points for matplotlib
 
 
-# class MyModelWithFigure(models.Model):
-#     # ... other fields
-#     # figures.py should be in the same directory where models.py is placed.
-#     # see  ./django_matplotlib/figures.py for example.
-#     fig = MatplotlibFigureField(figure='test_figure', verbose_name='figure',
-#                                 silent=True)
-#     # ... other fields
+class Colors(models.Model):  # Plotted Colors based on device
+
+    # ID 4 types of device based on frequency parameters
+
+
+class FrequencyDevice(models.Model):
+
+
+class DataConversion(models.Model):  # CSV to JSON
+
+
+class DateTime(models.Model):
+    """
+    A model with a DateTimeField, used to test if DateTimeField
+    changes are detected properly.
+    """
+    label = models.CharField(max_length=100)
+    timestamp = models.DateTimeField()
+    date = models.DateField()
+    time = models.TimeField()
+    naive_dt = models.DateTimeField(null=True, blank=True)
+
+
+class FakePlotting(models.Model):  # Experiment with matplotlib
+
+
+class Mapping(models.Model):  # Plotting on map or chart
+
+
+class Layout(models.Model):

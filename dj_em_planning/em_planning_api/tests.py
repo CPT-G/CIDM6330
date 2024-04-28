@@ -67,86 +67,127 @@
 #         assert df1.dtypes['column2'] == object
 
 from django.urls import path, reverse, include, resolve
-from django.test import SimpleTestCase
+from django.test import TestCase
 from em_planning_api.views import CustomerView
-from rest_framework.test import APITestCase, APIClient
+from rest_framework.test import APITestCase, APIRequestFactory
 from rest_framework.authtoken.models import Token
 from rest_framework import status
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
+from .models import EMData
 
 
-class ApiUrlsTests(SimpleTestCase):
-
-    def test_get_customers_is_resolved(self):
-        url = reverse('customer')
-        self.assertEquals(resolve(url).func.view_class, CustomerView)
-
-
-class CustomerAPIViewTests(APITestCase):
-    customers_url = reverse("customer")
+class EMDataTest(APITestCase):
+    """Ensure we can create a new EM Data object"""
 
     def setUp(self):
-        self.user = User.objects.create_user(
-            username='admin', password='admin')
-        self.token = Token.objects.create(user=self.user)
-        # self.client = APIClient()
-        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+        self.factory = APIRequestFactory()
+        self.em_data = EMData.objects.create(
+            frequency=32.345,
+            device='FM',
+            location='14SKD',
+            grid_1=33819,
+            grid_2=74840,
+            lat=34.981177,
+            long=-101.915893,
+            nearhit='true')
 
-    def test_get_customers_authenticated(self):
-        response = self.client.get(self.customers_url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+    self.list_url
+    # def setUp(self):
+    #     EMData.objects.create(
+    #         frequency=32.345, device='FM', location='14SKD', grid_1=33819, grid_2=74840, lat=34.981177, long=-101.915893, nearhit='true'
+    #     )
+    #     EMData.objects.create(
+    #         frequency=30.125, device='FM', location='14SKD', grid_1=33909, grid_2=79924, lat=34.981959, long=-101.914928, nearhit='false'
+    #     )
 
-    def test_get_customers_un_authenticated(self):
-        self.client.force_authenticate(user=None, token=None)
-        response = self.client.get(self.customers_url)
-        self.assertEquals(response.status_code, 401)
+    # def test_lat_long(self):
+    #     old_main = EMData.objects.get(lat=34.981177, long=-101.915893)
+    #     kilgore_rc = EMData.objects.get(lat=34.981959, long=-101.914928)
+    #     self.assertEqual(old_main.get_point(), 34.981177, -101.915893)
+    #     self.assertEqual(kilgore_rc.get_point(), 34.981959, -101.914928)
 
-    def test_post_customer_authenticated(self):
-        data = {
-            "title": "Mr",
-            "name": "Peter",
-            "last_name": "Parkerz",
-            "gender": "M",
-            "status": "published"
-        }
-        response = self.client.post(self.customers_url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(len(response.data), 8)
+    # def get_point(self):
+    #     return self.Lat + self.Long
+
+    # def get_frequency(self):
+    #     return self.Frequency + 'mHz.'
+
+    # def test_frequency(self):
+    #     freq = EMData.objects.get(frequency=32.345)
+    #     self.assertEqual(freq.get_frequency(), 32.345)
+
+# class ApiUrlsTests(SimpleTestCase):
+
+#     def test_get_customers_is_resolved(self):
+#         url = reverse('customer')
+#         self.assertEquals(resolve(url).func.view_class, CustomerView)
 
 
-class CustomerDetailAPIViewTests(APITestCase):
-    customer_url = reverse('customer-detail', args=[1])
-    customers_url = reverse("customer")
+# class CustomerAPIViewTests(APITestCase):
+#     customers_url = reverse("customer")
 
-    def setUp(self):
-        self.user = User.objects.create_user(
-            username='admin', password='admin')
-        self.token = Token.objects.create(user=self.user)
-        # self.client = APIClient()
-        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+#     def setUp(self):
+#         self.user = User.objects.create_user(
+#             username='admin', password='admin')
+#         self.token = Token.objects.create(user=self.user)
+#         # self.client = APIClient()
+#         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
 
-        # Saving customer
-        data = {
-            "title": "Mrs",
-            "name": "Johnson",
-            "last_name": "MOrisee",
-            "gender": "F",
-            "status": "published"
-        }
-        self.client.post(
-            self.customers_url, data, format='json')
+#     def test_get_customers_authenticated(self):
+#         response = self.client.get(self.customers_url)
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_get_customer_autheticated(self):
-        response = self.client.get(self.customer_url)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data['name'], 'Johnson')
+#     def test_get_customers_un_authenticated(self):
+#         self.client.force_authenticate(user=None, token=None)
+#         response = self.client.get(self.customers_url)
+#         self.assertEquals(response.status_code, 401)
 
-    def test_get_customer_un_authenticated(self):
-        self.client.force_authenticate(user=None, token=None)
-        response = self.client.get(self.customer_url)
-        self.assertEqual(response.status_code, 401)
+#     def test_post_customer_authenticated(self):
+#         data = {
+#             "title": "Mr",
+#             "name": "Peter",
+#             "last_name": "Parkerz",
+#             "gender": "M",
+#             "status": "published"
+#         }
+#         response = self.client.post(self.customers_url, data, format='json')
+#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+#         self.assertEqual(len(response.data), 8)
 
-    def test_delete_customer_authenticated(self):
-        response = self.client.delete(self.customer_url)
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+# class CustomerDetailAPIViewTests(APITestCase):
+#     customer_url = reverse('customer-detail', args=[1])
+#     customers_url = reverse("customer")
+
+#     def setUp(self):
+#         self.user = User.objects.create_user(
+#             username='admin', password='admin')
+#         self.token = Token.objects.create(user=self.user)
+#         # self.client = APIClient()
+#         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+
+#         # Saving customer
+#         data = {
+#             "title": "Mrs",
+#             "name": "Johnson",
+#             "last_name": "MOrisee",
+#             "gender": "F",
+#             "status": "published"
+#         }
+#         self.client.post(
+#             self.customers_url, data, format='json')
+
+#     def test_get_customer_autheticated(self):
+#         response = self.client.get(self.customer_url)
+#         self.assertEqual(response.status_code, 200)
+#         self.assertEqual(response.data['name'], 'Johnson')
+
+#     def test_get_customer_un_authenticated(self):
+#         self.client.force_authenticate(user=None, token=None)
+#         response = self.client.get(self.customer_url)
+#         self.assertEqual(response.status_code, 401)
+
+#     def test_delete_customer_authenticated(self):
+#         response = self.client.delete(self.customer_url)
+#         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
