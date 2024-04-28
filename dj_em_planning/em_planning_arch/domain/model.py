@@ -4,7 +4,9 @@ from datetime import date
 class DomainEMData:
     """EM Data domain model."""
 
-    def __init__(self, frequency, device, location, grid_1, grid_2, lat, long, nearhit):
+    def __init__(self, date, time, frequency, device, location, grid_1, grid_2, lat, long, nearhit):
+        self.date = date
+        self.time = time
         self.frequency = frequency
         self.device = device
         self.location = location

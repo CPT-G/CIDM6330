@@ -8,7 +8,7 @@ from channels.consumer import AsyncConsumer, SyncConsumer
 from channels.generic.http import AsyncHttpConsumer
 
 # Local
-from em_planning_api.models import EMData
+from .models import EMData
 
 
 class SimpleEMDataConsumer(AsyncConsumer):
@@ -44,7 +44,7 @@ class EMDataConsumer(AsyncHttpConsumer):
             await self.send_body(payload.encode("utf-8"), more_body=True)
             await asyncio.sleep(1)
 
-    async def send_em_data(self, bookmark):
+    async def send_em_data(self, em_data):
         # Serialize the bookmark
         data = json.dumps(
             {"lat": em_data.lat, "long": em_data.long, "frequency": em_data.frequency})

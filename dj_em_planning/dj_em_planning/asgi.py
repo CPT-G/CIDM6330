@@ -12,7 +12,7 @@ import os
 from channels.routing import ChannelNameRouter, ProtocolTypeRouter
 from django.core.asgi import get_asgi_application
 
-from em_planning_api import planners
+from em_planning_api import consumers
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dj_em_planning.settings')
 
@@ -24,7 +24,7 @@ application = ProtocolTypeRouter(
         "http": em_planning_asgi_app,
         "channel": ChannelNameRouter(
             {
-                "em-data-add": planners.SimpleEMDataPlanner.as_asgi(),
+                "em-data-add": consumers.SimpleEMDataPlanner.as_asgi(),
             }
         ),
     }
