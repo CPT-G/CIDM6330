@@ -1,18 +1,15 @@
+from em_planning_arch.domain.model import DomainEMData
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-# from pygments.lexers import get_all_lexers
-# from pygments.styles import get_all_styles
-# from pygments.lexers import get_lexer_by_name
-# from pygments.formatters.html import HtmlFormatter
-# from pygments import highlight
-
-from em_planning_arch.domain.model import DomainEMData
-
-# pygments stuff
-LEXERS = [item for item in get_all_lexers() if item[1]]
-LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
-STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
+import matplotlib.pyplot as plt
+import csv
+import json
+import numpy as np
+import pandas as pd
+import geopandas as gpd
+from shapely.geometry import Point
+import matplotlib.pyplot as plt
 
 # Create your models here.
 
@@ -100,10 +97,34 @@ class EMData(models.Model):
         return b
 
 
-class LatLongPoints(models.Model):  # x and y points for matplotlib
+class LatLongPoints(models.Model):
+    """x and y values converting to point for matplolib"""
+
+    dataset = pd.read_csv(
+        "dj_em_planning/outside_scope/em_data_no_mapping.csv")
+
+    latitudes = dataset.loc[:, 'Lat']
+    longitudes = dataset.loc[:, "Long"]
+
+    min_latitude = latitudes.min()
+    max_latitude = latitudes.max()
+    min_longitude = longitudes.min()
+    max_longitude = longitudes.max()
+
+    latitudes_fm = dataset.loc[:, 'Lat_FM']
+    longitudes_fm = dataset.loc[:, "Long_FM"]
+    latitudes_tacsat = dataset.loc[:, 'Lat_TACSAT']
+    longitudes_tacsat = dataset.loc[:, "Long_TACSAT"]
+    latitudes_jcr = dataset.loc[:, 'Lat_JCR']
+    longitudes_jcr = dataset.loc[:, "Long_JCR"]
+    latitudes_wifi = dataset.loc[:, 'Lat_WiFi']
+    longitudes_wifi = dataset.loc[:, "Long_WiFi"]
+
+    def __str__(self):
+        return f'{self.latitudes} {self.longitudes}'
 
 
-class Colors(models.Model):  # Plotted Colors based on device
+class Colors(models.Model):
     """
     Color Model
     Defines the attributes of colors of scatterplot
@@ -270,7 +291,7 @@ class Colors(models.Model):  # Plotted Colors based on device
         'yellowgreen':          '#9ACD32'
     }
 
-    def _get_hex_color(color):
+    def _get_hex_color(self, color):
         """
         Return the hex color code for a given color.
         Args:
@@ -327,7 +348,29 @@ class FrequencyDevice(models.Model):
             return ('Outside frequency parameters')
 
 
-class DataConversion(models.Model):  # CSV to JSON
+class DataConversion(models.Model):
+    """
+    CSV to JSON conversion Model
+    """
+    path_csv = ('em_planning_arch/domain/em_data.csv')
+    path_json = ('dj_em_planning.db.em_data')
+
+    def csv_to_json(self, path_csv, path_json):
+        jsonArray = []
+
+        with open(path_csv, encoding='utf-8') as csvf:
+            csvReader = csv.DictReader(csvf)
+
+            for row in csvReader:
+                jsonArray.append(row)
+
+        with open(path_json, 'w', encoding='utf-8') as jsonf:
+            jsonString = json.dumps(jsonArray, indent=4)
+            jsonf.write(jsonString)
+
+    path_csv = r'data.csv'
+    path_json = r'data.json'
+    csv_to_json(path_csv, path_json)
 
 
 class DateTime(models.Model):
@@ -349,9 +392,41 @@ class DateTime(models.Model):
 
 
 class FakePlotting(models.Model):  # Experiment with matplotlib
+    def plot_square(self, x, y):
+        y_squared = np.square(y)
+        return plt.plot(x, y_squared)
+
+    def plot_data(self, x, y, title):
+        plt.figure()
+        plt.title(title)
+        plt.plot(x, y)
+        plt.show()
 
 
-class Mapping(models.Model):  # Plotting on map or chart
+class Mapping(models.Model):
+    """Plotting on map or chart"""
+    dataset = pd.read_csv("dj_em_planning/outside_scope/em_data_mapping.csv")
+
+    latitudes = dataset.loc[:, 'Lat']
+    longitudes = dataset.loc[:, "Long"]
+
+    min_latitude = latitudes.min()
+    max_latitude = latitudes.max()
+    min_longitude = longitudes.min()
+    max_longitude = longitudes.max()
+
+    data_points = [Point(xy) for xy in zip(longitudes, latitudes)]
+
+    def __str__(self):
+        return f'{self.latitudes} {self.longitudes}'
 
 
 class Layout(models.Model):
+    """Matplotlib plotting layout Class"""
+
+    def __init__(self, ax, fig, spines, xaxis, yaxis):
+        self.ax = ax
+        self.fig = fig
+        self.spines = spines
+        self.xaxis = xaxis
+        self.yaxis = yaxis

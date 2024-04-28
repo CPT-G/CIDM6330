@@ -3,8 +3,6 @@ import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
 import matplotlib.pyplot as plt
-from matplotlib import cm
-
 
 dataset = pd.read_csv("em_data_mapping.csv")
 

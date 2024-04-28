@@ -45,7 +45,7 @@ class EMDataConsumer(AsyncHttpConsumer):
             await asyncio.sleep(1)
 
     async def send_em_data(self, em_data):
-        # Serialize the bookmark
+        # Serialize the em_data
         data = json.dumps(
             {"lat": em_data.lat, "long": em_data.long, "frequency": em_data.frequency})
         # Send the serialized data as a JSON response
