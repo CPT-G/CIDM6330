@@ -18,7 +18,8 @@ from barkyarch.domain.model import DomainBookmark
 class Command(ABC):
     @abstractmethod
     def execute(self, data):
-        raise NotImplementedError("A command must implement the execute method")
+        raise NotImplementedError(
+            "A command must implement the execute method")
 
 
 class PythonTimeStampProvider:
@@ -36,7 +37,8 @@ class AddBookmarkCommand(Command):
         self.now = now
 
     def execute(self, data: DomainBookmark, timestamp=None):
-        bookmark = Bookmark(data.id, data.title, data.url, data.notes, timestamp)
+        bookmark = Bookmark(data.id, data.title, data.url,
+                            data.notes, timestamp)
         bookmark.timestamp = self.now
 
         # again, we skip the ouw with django's transaction management
@@ -67,7 +69,7 @@ class DeleteBookmarkCommand(Command):
             bookmark.delete()
 
 
-class EditBookmarkCommand(Command):
+class UpdateBookmarkCommand(Command):
     """
     Using the django ORM to update a bookmark
     """
@@ -76,3 +78,12 @@ class EditBookmarkCommand(Command):
         bookmark = Bookmark.update_from_domain(data)
         with transaction.atomic():
             bookmark.save()
+
+
+class GetBookmarkCommand(Command):
+    """
+    Using the django orm and transactions to add a bookmark
+    """
+
+    def execute(self, data: int, timestamp=None):
+        return Bookmark.objects.get(id=data).to_domain()
