@@ -3,14 +3,16 @@ import pandas as pd
 import numpy as np
 from matplotlib.testing.decorators import image_comparison
 from em_planning_api.models import _get_hex_color
-from em_planning_api.models import FakePlotting
-from em_planning_api.models import LatLongPoints
+from .models import User, EMData, LatLongPoints, Colors, FrequencyDevice, DataConversion, DateTime, FakePlotting, Mapping, Layout
 import geopandas as gpd
 from shapely.geometry import Point
 import matplotlib.pyplot as plt
-from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase, APIRequestFactory
 from django.urls import reverse
 from rest_framework import status
+from freezegun import freeze_time
+from datetime import datetime
+from datetime import date
 
 
 class UserTest(APITestCase):
@@ -29,7 +31,7 @@ class UserTest(APITestCase):
 
     def test_get_consumers_un_authenticated(self):
         self.client.force_authenticate(user=None, token=None)
-        response = self.client.get(self.customers_url)
+        response = self.client.get(self.consumers_url)
         self.assertEquals(response.status_code, 401)
 
     def test_post_consumer_authenticated(self):
@@ -60,15 +62,7 @@ class EMDataTest(TestCase):
             long=-101.915893,
             nearhit='true')
 
-    self.list_frequency
-
-    def setUp(self):
-        EMData.objects.create(
-            frequency=32.345, device='FM', location='14SKD', grid_1=33819, grid_2=74840, lat=34.981177, long=-101.915893, nearhit='true'
-        )
-        EMData.objects.create(
-            frequency=30.125, device='FM', location='14SKD', grid_1=33909, grid_2=79924, lat=34.981959, long=-101.914928, nearhit='false'
-        )
+        self.list_frequency
 
     def test_lat_long(self):
         old_main = EMData.objects.get(lat=34.981177, long=-101.915893)
@@ -99,7 +93,7 @@ class LatLongPointsTest(TestCase):
     latitudes_wifi = dataset.loc[:, 'Lat_WiFi']
     longitudes_wifi = dataset.loc[:, "Long_WiFi"]
 
-    def assert_plot_figures_added():
+    def assert_plot_figures_added(self):
         num_figures_before = plt.scatter().number
 
         plt.scatter(latitudes_fm, longitudes_fm,
@@ -184,28 +178,41 @@ class DataConversionTest(TestCase):
     def test_aggregation(self):
         pass
 
-    def test_dataframe_dtypes():
-        df1 = pd.read_csv(em_data_mapping.csv)
+    def test_dataframe_dtypes(self):
+        df1 = pd.read_csv('dj_em_planning/outside_scope/em_data_mapping.csv')
 
         assert df1.dtypes['column1'] == int
         assert df1.dtypes['column2'] == object
 
 
 class DateTimeTest(TestCase):
+    @freeze_time("2000-01-01")
+    def test_timestamp(self):
+        self.assertEquals(datetime.now())
+        self.assertEquals(date.today())
 
 
 class FakePlottingTest(TestCase):
 
-    def test_plot_square1():
+    def test_plot_square1(self):
         x, y = [0, 1, 2], [0, 1, 2]
         line, = plot_square(x, y)
         x_plot, y_plot = line.get_xydata().T
         np.assert_array_equal(y_plot, np.square(y))
 
-    def test_module(mock_plt):
+    def test_module(self, mock_plt):
         x = np.arange(0, 5, 0.1)
         y = np.sin(x)
-        my_module.plot_data(x, y, "my title")
+        models.plot_data(x, y, "my title")
+
+    def test_curve_sqr_plot(self):
+        x = np.array([1, 3, 4])
+        y = np.square(x)
+        pt, = plot_sqr_curve(x)
+        y_data = pt.get_data()[1]
+        x_data = pt.get_data()[0]
+        self.assertTrue((y == y_data).all())
+        self.assertTrue((x == x_data).all())
 
 
 class MappingTest(TestCase):
@@ -232,7 +239,7 @@ class MappingTest(TestCase):
     ax.set_xlim(min_longitude - 0.003, max_longitude + 0.003)
     ax.set_ylim(min_latitude - 0.003, max_latitude + 0.003)
 
-    def assert_plot_figures_added_map():
+    def assert_plot_figures_added_map(self, num_figures_before_map, num_figures_after_map):
         num_figures_before_map = plt.geo_df().number
         yield
         num_figures_after_map = plt.geo_df().number
@@ -247,7 +254,7 @@ class MappingTest(TestCase):
 
 class LayoutTest(TestCase):
     @image_comparison(baseline_images=['spines_axes_positions'])
-    def test_spines_axes_positions():
+    def test_spines_axes_positions(self):
         fig = plt.figure()
         x = np.linspace(0, 2*np.pi, 100)
         y = 2*np.sin(x)

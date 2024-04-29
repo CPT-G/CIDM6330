@@ -1,78 +1,100 @@
 from rest_framework.response import Response
-# from rest_framework.decorators import api_view
-from rest_framework.views import APIView
-# from em_planning_arch.models import Item
-from em_planning_api.models import Customer
-from em_planning_api.serializers import CustomerSerializer
+# from rest_framework.views import APIView
+from .models import User, EMData, LatLongPoints, Colors, FrequencyDevice, DataConversion, DateTime, FakePlotting, Mapping, Layout
 from django.shortcuts import render
 from django.http import Http404
 from rest_framework import status, permissions
 from functools import wraps
 from rest_framework.permissions import IsAuthenticated
-# from .serializers import ItemSerializer
-
-# from django.contrib.auth.models import User
-# from rest_framework import generics, permissions, renderers, viewsets
-# from rest_framework.decorators import action
-
-# from .models import Bookmark, Snippet
-# from .permissions import IsOwnerOrReadOnly
-# from .serializers import BookmarkSerializer, SnippetSerializer, UserSerializer
-
+from .serializers import UserSerializer, EMDataSerializer, LatLongPointsSerializer, ColorsSerializer
+from .serializers import FrequencyDeviceSerializer, DataConversionSerializer, DateTimeSerializer
+from .serializers import FakePlottingSerializer, MappingSerializer, LayoutSerializer
+from rest_framework import viewsets
 # Create your views here
-
-# @api_view methods = GET, POST, PUT, DELETE
-
-
-class CustomerView(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request, format=None):
-        customers = Customer.published.all()
-        serializer = CustomerSerializer(customers, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = CustomerSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+# APIViews = GET, POST, PUT, DELETE
 
 
-def resource_checker(model):
-    def check_entity(fun):
-        @wraps(fun)
-        def inner_fun(*args, **kwargs):
-            try:
-                x = fun(*args, **kwargs)
-                return x
-            except model.DoesNotExist:
-                return Response({'message': 'Not Found'}, status=status.HTTP_204_NO_CONTENT)
-        return inner_fun
-    return check_entity
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    This viewset automatically provides `list` and `retrieve` actions.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
-class CustomerDetailView(APIView):
-    permission_classes = (IsAuthenticated,)
+class EMDataViewSet(viewsets.ModelViewSet):
 
-    @resource_checker(Customer)
-    def get(self, request, pk, format=None):
-        customer = Customer.published.get(pk=pk)
-        serializer = CustomerSerializer(customer)
-        return Response(serializer.data)
+    queryset = EMData.objects.all()
+    serializer_class = EMDataSerializer
 
-    @resource_checker(Customer)
-    def put(self, request, pk, format=None):
-        customer = Customer.published.get(pk=pk)
-        serializer = CustomerSerializer(customer, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @resource_checker(Customer)
-    def delete(self, request, pk, format=None):
-        customer = Customer.published.get(pk=pk)
-        customer.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+class LatLongPointsViewSet(viewsets.ModelViewSet):
+
+    queryset = LatLongPoints.objects.all()
+    serializer_class = LatLongPointsSerializer
+
+
+class ColorsViewSet(viewsets.ModelViewSet):
+
+    queryset = Colors.objects.all()
+    serializer_class = ColorsSerializer
+
+
+class FrequencyDeviceViewSet(viewsets.ModelViewSet):
+
+    queryset = FrequencyDevice.objects.all()
+    serializer_class = FrequencyDeviceSerializer
+
+
+class DataConversionViewSet(viewsets.ModelViewSet):
+
+    queryset = DataConversion.objects.all()
+    serializer_class = DataConversionSerializer
+
+
+class DateTimeViewSet(viewsets.ModelViewSet):
+
+    queryset = DateTime.objects.all()
+    serializer_class = DateTimeSerializer
+
+
+class FakePlottingViewSet(viewsets.ModelViewSet):
+
+    queryset = FakePlotting.objects.all()
+    serializer_class = FakePlottingSerializer
+
+
+class MappingViewSet(viewsets.ModelViewSet):
+
+    queryset = Mapping.objects.all()
+    serializer_class = MappingSerializer
+
+
+class LayoutViewSet(viewsets.ModelViewSet):
+
+    queryset = Layout.objects.all()
+    serializer_class = LayoutSerializer
+
+# class CustomerDetailView(APIView):
+#     permission_classes = (IsAuthenticated,)
+
+#     @resource_checker(Customer)
+#     def get(self, request, pk, format=None):
+#         customer = Customer.published.get(pk=pk)
+#         serializer = CustomerSerializer(customer)
+#         return Response(serializer.data)
+
+#     @resource_checker(Customer)
+#     def put(self, request, pk, format=None):
+#         customer = Customer.published.get(pk=pk)
+#         serializer = CustomerSerializer(customer, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#     @resource_checker(Customer)
+#     def delete(self, request, pk, format=None):
+#         customer = Customer.published.get(pk=pk)
+#         customer.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
