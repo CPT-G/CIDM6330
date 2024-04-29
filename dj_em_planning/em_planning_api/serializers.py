@@ -1,28 +1,62 @@
 from rest_framework import serializers
-# from em_planning.models import Item
-# from django.contrib.auth.models import User
-# from .models import LearningPath
-# from .models import Bookmark, Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
-# from django.contrib.auth.models import User
-from em_planning_api.models import Customer
-
-# class ItemSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Item
-#         fields = '__all__'
-
-# class LearningPathSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = LearningPath
-#         fields = ("id", "title", "progress", "date")
+from .models import User, EMData, LatLongPoints, Colors, FrequencyDevice, DataConversion, DateTime, FakePlotting, Mapping, Layout
 
 
-# class UserSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ['url', 'username', 'email']
-
-class CustomerSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
+        model = User
+        fields = '__all__'
+
+
+class EMDataSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = EMData
+        fields = '__all__'
+
+
+class LatLongPointsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LatLongPoints
+        fields = '__all__'
+
+
+class ColorsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Colors
+        fields = '__all__'
+
+
+class FrequencyDeviceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FrequencyDevice
+        fields = '__all__'
+
+
+class DataConversionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DataConversion
+        fields = '__all__'
+
+
+class DateTimeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DateTime
+        fields = '__all__'
+
+
+class FakePlottingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FakePlotting
+        fields = '__all__'
+
+
+class MappingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mapping
+        fields = '__all__'
+
+
+class LayoutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Layout
         fields = '__all__'
