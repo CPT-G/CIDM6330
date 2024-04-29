@@ -1,10 +1,14 @@
-from django.db import transaction
+import os
+import csv
+from unittest.mock import patch
+
 from django.test import TestCase
-from django.urls import reverse
 from django.utils.timezone import localtime
 
 from barkyapi.models import Bookmark
 from barkyarch.domain.model import DomainBookmark
+from channels.layers import get_channel_layer
+from barkyapi.signals import send_bookmark_to_channel, log_bookmark_to_csv
 from barkyarch.services.commands import (
     AddBookmarkCommand,
     ListBookmarksCommand,
@@ -12,12 +16,6 @@ from barkyarch.services.commands import (
     UpdateBookmarkCommand,
     GetBookmarkCommand,
 )
-# from channels.testing import ApplicationCommunicator
-# from channels.layers import get_channel_layer
-# from barkyapi.signals import send_bookmark_to_channel, log_bookmark_to_csv
-# import os
-# import csv
-# from unittest.mock import patch
 
 
 class TestCommands(TestCase):
@@ -100,10 +98,6 @@ class SignalHandlersTest(TestCase):
         self.csv_file_path = os.path.join(
             current_directory, "domain", "created_log.csv")
         self.channel_layer = get_channel_layer()
-
-    # def tearDown(self):
-    #     if os.path.exists(self.csv_file_path):
-    #         os.remove(self.csv_file_path)
 
     def test_log_bookmark_to_csv(self):
         # Bookmark instance
