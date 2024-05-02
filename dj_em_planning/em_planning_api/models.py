@@ -1,26 +1,23 @@
 from em_planning_arch.domain.model import DomainEMData
 from django.db import models
-from django.contrib.auth.models import User
-from django.utils import timezone
+from django.contrib.auth import get_user_model
+# from django.utils import timezone (not assessed)
 import matplotlib.pyplot as plt
 import csv
 import json
 import numpy as np
 import pandas as pd
-import geopandas as gpd
+# import geopandas as gpd (not assessed)
 from shapely.geometry import Point
 import matplotlib.pyplot as plt
 
-# Create your models here.
 
-
-class User(models.Model):
+class User(models.User):
     """
     User Model
     Defines the attributes of User Info
     """
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='user', null=True)
+    user = get_user_model()
     title = models.CharField(max_length=15, null=True, blank=True)
     first_name = models.CharField(max_length=20, null=False, blank=False)
     last_name = models.CharField(max_length=20, null=False, blank=False)
@@ -98,7 +95,11 @@ class EMData(models.Model):
 
 
 class LatLongPoints(models.Model):
-    """x and y values converting to point for matplolib"""
+    """
+    Latitude and Longitude Points Model
+    Defines the attributes of our Lat and Long Points
+    x and y values converting to point for matplolib
+    """
 
     dataset = pd.read_csv(
         "dj_em_planning/outside_scope/em_data_no_mapping.csv")
@@ -127,7 +128,7 @@ class LatLongPoints(models.Model):
 class Colors(models.Model):
     """
     Color Model
-    Defines the attributes of colors of scatterplot
+    Defines the attributes of colors on scatterplot
     """
     _MATPLOTLIB_COLOR_MAP = {
         'b': 'blue',
@@ -314,6 +315,8 @@ class Colors(models.Model):
 
 class FrequencyDevice(models.Model):
     """
+    Frequency by Device Model
+    Defines the attributes of our Frequencies by Device
     Frequency Integer to String (Common naming) Conversion Model
     ID and change int to str: 4 types of device based on frequency parameters
     """
@@ -351,6 +354,7 @@ class FrequencyDevice(models.Model):
 class DataConversion(models.Model):
     """
     CSV to JSON conversion Model
+    Defines the attributes of our CSV and JSON Data
     """
     path_csv = ('em_planning_arch/domain/em_data.csv')
     path_json = ('dj_em_planning.db.em_data')
@@ -373,11 +377,13 @@ class DataConversion(models.Model):
     csv_to_json(path_csv, path_json)
 
 
-class DateTime(models.Model):
+class DateTime(models.Model):  # DateTimeField Testing likely unecessary
     """
-    A model with a DateTimeField, used to test if DateTimeField
-    changes are detected properly.
+    DateTimeField Model
+    Defines the attributes of our DateTimeField
+    Used to test if DateTimeField changes are detected properly
     """
+
     label = models.CharField(max_length=100)
     timestamp = models.DateTimeField()
     date = models.DateField()
@@ -404,7 +410,10 @@ class FakePlotting(models.Model):  # Experiment with matplotlib
 
 
 class Mapping(models.Model):
-    """Plotting on map or chart"""
+    """
+    Mapping Model
+    Defines the attributes of our plotting on maps or charts
+    """
     dataset = pd.read_csv("dj_em_planning/outside_scope/em_data_mapping.csv")
 
     latitudes = dataset.loc[:, 'Lat']
@@ -422,7 +431,10 @@ class Mapping(models.Model):
 
 
 class Layout(models.Model):
-    """Matplotlib plotting layout Class"""
+    """
+    Matplotlib Layout Model
+    Defines the attributes of our Matplotlib plotting
+    """
 
     def __init__(self, ax, fig, spines, xaxis, yaxis):
         self.ax = ax

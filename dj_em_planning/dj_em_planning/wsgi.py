@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+# No changes from Django Rest Framework creation
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dj_em_planning.settings')
 
 application = get_wsgi_application()

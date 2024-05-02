@@ -21,8 +21,12 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 urlpatterns = [
+    # Nearly mirrored paths from djbarky RF4
     path('admin/', admin.site.urls),
     path('em_planning_api/', include('em_planning_api.urls')),
+    # Attempting to redirect "incorrect urls" to standardized url
     path('', RedirectView.as_view(url='em_planning_api/')),
+    # User account auth path
     path('accounts/', include('django.contrib.auth.urls')),
+    # Static Path for generic content
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

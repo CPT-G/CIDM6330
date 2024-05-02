@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+# Mostly mirrored from djbarky RF4, changes at bottom
 from pathlib import Path
-import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,8 +34,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # channels docs recommend adding channels before other apps
-    # 'daphne',  # ASGI server
-    # Djgano
+    'daphne',  # ASGI server
+    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,6 +148,24 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
+# Channels
+ASGI_APPLICATION = "dj_em_planning.asgi.application"
+# CHANNEL_LAYERS = {"default": {
+#     "BACKEND": "channels.layers.InMemoryChannelLayer"}}
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
+
+"""
+Redirecting URL to login for User auth
+
+"""
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
 
@@ -157,16 +176,3 @@ LOGIN_URL = '/accounts/login/'
 LOGOUT_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# # Channels
-# ASGI_APPLICATION= "dj_em_planning.asgi.application"
-# # CHANNEL_LAYERS = {"default": {
-# #     "BACKEND": "channels.layers.InMemoryChannelLayer"}}
-# CHANNEL_LAYERS= {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#         },
-#     },
-# }

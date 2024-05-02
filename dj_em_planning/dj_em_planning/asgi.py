@@ -7,6 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/4.2/howto/deployment/asgi/
 """
 
+# Nearly mirrored from djbarky RF4
 import os
 
 from channels.routing import ChannelNameRouter, ProtocolTypeRouter
@@ -24,7 +25,7 @@ application = ProtocolTypeRouter(
         "http": em_planning_asgi_app,
         "channel": ChannelNameRouter(
             {
-                "em-data-add": consumers.SimpleEMDataPlanner.as_asgi(),
+                "em-data-add": consumers.SimpleEMDataConsumer.as_asgi(),
             }
         ),
     }
