@@ -108,7 +108,15 @@ I found the following pattern of coding by python module to be the most efficien
 
 <ins>em_planning_api</ins>: <br>urls &rarr; models &rarr; serializers &rarr; views &rarr; admin &rarr; apps &rarr; consumers &rarr; permissions &rarr; signals &rarr; tests</br>
 
-I recognize TDD is meant to build tests
+I recognize TDD is meant to build tests first. I took this as build tests prior to diving in application development. I did not see a way forward to test building without running through the urls, models, serializers, and views modules. These core modules that the Django Rest Framework autopopulates are interdependent and import sections of each other for testing.
+
+<ins>For example</ins>:
+
+<span style='color: 82516C;'>from</span> <span style='color: 4EC8AE;'>em_planning_arch.domain.model</span> <span style='color: 82516C;'>import <span style='color: 4EC8AE;'>DomainEMData</span>
+
+<span style='color: 82516C;'>from</span> <span style='color: 4EC8AE;'>.models</span> <span style='color: 82516C;'>import</span> <span style='color: 4EC8AE;'>User, EMData, LatLongPoints</span>
+
+These module classes were in place on models prior to being imported into serializers. In the workflow, I felt the need to follow this logic.
 
 ### **Encountered Pitfalls**
  * Scope creep
@@ -117,11 +125,12 @@ I recognize TDD is meant to build tests
     * Imported accessors
  * Coding &rarr; Problem encountered &rarr; 2 hours of researching documentation &rarr; Problem fixed &rarr; Forgot coding direction
 
+When coding, I find the struggle to be real. I don't shy away from the challenge of learning this new language and best practices for architecture and design. The repititions and what feels like blunt force trauma has a lasting effect on improvement.
 ![Coding Cycle](https://i.pinimg.com/originals/34/24/d5/3424d5afdedbed4812296777c8154ab6.jpg)
 [Image 6][Cycle]: The Never Ending Cycle of Coding
 ***
 ### **Exciting Relevation**
-The more coding I created and problems I resolved the more my mind began to retain the coding language.
+The more code I created and problems I resolved the more my mind began to retain the coding language. Several times I went to bed after hours of struggling on a particular problem. My subconscious would work the issues and on a few instances the problems would enter my dreams. More often than not, I woke up with a solution (or another iteration of attempted solution). I can say with certainty I will never be on the level of Neo from the Matrix, but I recognize the progress.
 
 ![Coding Architecture](https://cdn.quotesgram.com/img/35/43/1470817928-matrix-hallway.jpg)
 [Image 7][Matrix]: Matrix Code Architecture Hallway
