@@ -5,13 +5,15 @@ Josh Ganatta
 ### **Problem**
 How do Battalion Main Command Posts evolve to be mobile, redundant, and survivable with existing equipment on hand while avoiding advanced enemy electromagnetic target acquisition?
 ***
-### **Software Solution Proposal**
+### **Software Solution**
 Electromagnetic (EM) planning tool taking anticipated military electronics equipment to be utilized as input and provides EM signature output for planning purposes and course of action development.
- * Military Equipment EM Emissions - Partially accomplished (database)
- * Satellite Imagery Overlay - Not accomplished
- * Location Grid Input - Accomplished
- * Equipment EM Emmision Diameter - Not accomplished
- * Enemy EM Emissions Detection Parameters - Not accomplished
+ * Military Equipment EM Emissions - ***Partially accomplished (database)***
+ * Satellite Imagery Overlay - ***Not accomplished***
+ * Location Grid Input - ***Accomplished***
+ * Equipment EM Emmision Diameter - ***Not accomplished***
+ * Enemy EM Emissions Detection Parameters - ***Not accomplished***
+
+This module allows users to plot EM emissions Latitude and Longitude grids onto maps.
 ***
 ### **Django-Choices and Mods to the Model**
  1) Django Rest Framework for API
@@ -30,27 +32,52 @@ Electromagnetic (EM) planning tool taking anticipated military electronics equip
 
 
 ### **Diagram Sketches**
-The concept of the EM Planning Software provided a baseline to conceptualize sketching Unified Modeling Language (UML) Diagrams.
+The notion of the EM Planning Software provided a baseline to conceptualize sketching Unified Modeling Language (UML) Diagrams.
 
 #### **Class Diagram**
+This diagram examines the relationships between the military commander, EM emission sensor data collection Soldier, data messaging, database writing/reading, and map point plotting.  Although rudimentary, the thought experiment created a foundation to build the real life event sensory effect into a visualization tool for the commander to make informed decisions.
 ![alt text](<outside_scope/png/Class Diagram.drawio.png>)
  Image 2: Assignment 3 Class Diagram UML
 
 #### **Activity Diagram**
+This diagram surveys the flow of commander's intent to Solder and equipment actions creating sensed data for analysis and digestion.  Ultimately driving visual data into the Common Operating Picture for decision making.
 ![alt text](<outside_scope/png/Activity Diagram.drawio.png>)
  Image 3: Assignment 3 Activity Diagram UML
 
 #### **Sequence Diagram**
+This diagram outlines the progression of doctrine generating workflow and directing military decision-making process by organization's staff officers. The sequence of events triggers our EM Planning Tool's use for future operations planning.
 ![alt text](<outside_scope/png/Sequence Diagram.drawio.png>)
  Image 4: Assignment 3 Sequence Diagram UML
 
 #### **Use Case Diagram**
+This diagram depicts equipment transmitting EM emissions being captured by EM sensor equipment, the Soldier repsonsible for that data processing and fighting prouduct creation, and the commander who drives resource allocation.
 ![alt text](<outside_scope/png/Use Case Diagram.drawio.png>)
  Image 5: Assignment 3 Use Class Diagram UML
 ***
 ### **TDD Approach Used**
-With Percival and Gregory's examples of Test Driven Design (TDD) architecture approach, I User, EMData, LatLongPoints, Colors, FrequencyDevice, DataConversion, DateTime,
-FakePlotting, Mapping, Layout
+The UML diagrams provided context to perceive potential tests.  My intial list of testing ideas held throughout development with evolution and grouping occuring naturally. 
+
+<ins>Initial testing ideas</ins>:
+ * Latitude / Longitude grid point off map / outlier
+ * Read CSV (EM Database)
+ * Min/Max Latitudes Longitudes
+ * The map file get path
+ * Figure size, marker size, x/y limits
+ * Matplolib alpha transparency, graph title/labels/legend
+
+ <ins>Testing used</ins>:
+  * User
+  * EMData
+  * LatLongPoints
+  * Colors
+  * FrequencyDevice
+  * DataConversion
+  * DateTime
+  * FakePlotting
+  * Mapping
+  * Layout
+
+ With Percival and Gregory's examples of Test Driven Design (TDD) architecture approach, I 
 ***
 ### **Problem Overview**
 The past twenty years of warfare has focused on Counterinsurgency (COIN) operations with adversaries that did not have the same capabilities.  The lessons learned and best practices from this asymmetric warfare serve as the foundation for the next phase of anticipated conflict.  The US Army has accepted Large Scale Combat Operations (LSCO) as the methodology of conflict with near-peer adversaries such as Russia or China.  As the world watches the on-going LSCO in Ukraine, warfighting lessons become apparent to all echelons of our servicemembers….and our adversaries.  The way we fought in Afghanistan and Iraq for COIN will not work for LSCO.
@@ -74,10 +101,10 @@ My proposed prototype will be a rudementary forecasting tool utilizing publicly 
 ***
 ### **References**
 1. Image 1: Dr. Babb's Workflow of Percival and Gregory's Domain Model. CIDM 6330 Slides: <ins>CIDM6330-MessagesQueues</ins>. Slide 23.
-2. Image 2: Assignment 3 Class Diagram UML
-3. Image 3: Assignment 3 Activity Diagram UML
-4. Image 4: Assignment 3 Sequence Diagram UML
-5. Image 5: Assignment 3 Use Case Diagram UML
+2. Image 2: Assignment 3 Class Diagram UML.
+3. Image 3: Assignment 3 Activity Diagram UML.
+4. Image 4: Assignment 3 Sequence Diagram UML.
+5. Image 5: Assignment 3 Use Case Diagram UML.
 6. [Image 6][EM Image]: ["This is What Ground Forces Look Like to an Electronic Warfare System and Why It's a Big Deal" by Joseph Trevithick](https://www.thedrive.com/the-war-zone/33401/this-is-what-ground-forces-look-like-to-an-electronic-warfare-system-and-why-its-a-big-deal)
 7. ["Preparing for Large-Scale Combat Operations" by Center for Army Lessons Learned](https://api.army.mil/e2/c/downloads/2023/01/31/73b50bab/21-6-preparing-for-lsco-public.pdf)
 
