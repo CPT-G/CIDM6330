@@ -93,7 +93,7 @@ class LatLongPointsTest(TestCase):
     latitudes_wifi = dataset.loc[:, 'Lat_WiFi']
     longitudes_wifi = dataset.loc[:, "Long_WiFi"]
 
-    def assert_plot_figures_added(self):
+    def test_plot_figures_added(self):
         num_figures_before = plt.scatter().number
 
         plt.scatter(latitudes_fm, longitudes_fm,
@@ -108,7 +108,7 @@ class LatLongPointsTest(TestCase):
         num_figures_after = plt.scatter().number
         assert num_figures_before < num_figures_after
 
-    with assert_plot_figures_added():
+    with test_plot_figures_added():
         plt.xlabel('Longitude')
         plt.ylabel('Latitude')
         plt.legend(loc="upper left")
@@ -239,13 +239,13 @@ class MappingTest(TestCase):
     ax.set_xlim(min_longitude - 0.003, max_longitude + 0.003)
     ax.set_ylim(min_latitude - 0.003, max_latitude + 0.003)
 
-    def assert_plot_figures_added_map(self, num_figures_before_map, num_figures_after_map):
+    def test_plot_figures_added_map(self, num_figures_before_map, num_figures_after_map):
         num_figures_before_map = plt.geo_df().number
         yield
         num_figures_after_map = plt.geo_df().number
         assert num_figures_before_map < num_figures_after_map
 
-    with assert_plot_figures_added_map():
+    with test_plot_figures_added_map():
         plt.xlabel('Longitude')
         plt.ylabel('Latitude')
         plt.title('EM Emissions')
