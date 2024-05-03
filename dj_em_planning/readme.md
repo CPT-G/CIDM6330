@@ -57,7 +57,7 @@ This diagram depicts equipment transmitting EM emissions being captured by EM se
 ### **TDD Approach Used**
 The UML diagrams provided context to perceive potential tests.  My intial list of testing ideas held throughout development with evolution and grouping occuring naturally. 
 
-<ins>Initial testing ideas</ins>:
+<ins>Initial testing method ideas</ins>:
  * Latitude / Longitude grid point off map / outlier
  * Read CSV (EM Database)
  * Min/Max Latitudes Longitudes
@@ -65,7 +65,7 @@ The UML diagrams provided context to perceive potential tests.  My intial list o
  * Figure size, marker size, x/y limits
  * Matplolib alpha transparency, graph title/labels/legend
 
- <ins>Testing used</ins>:
+ <ins>Testing methods used</ins>:
   * User
   * EMData
   * LatLongPoints
