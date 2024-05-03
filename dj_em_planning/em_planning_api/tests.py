@@ -62,7 +62,7 @@ class EMDataTest(TestCase):
             long=-101.915893,
             nearhit='true')
 
-        self.list_frequency
+        # self.list_frequency
 
     def test_lat_long(self):
         old_main = EMData.objects.get(lat=34.981177, long=-101.915893)

@@ -120,21 +120,21 @@ The UML diagrams provided context to perceive potential tests.  My intial list o
 ### <h2 id="Exploring-Tests">**Exploring Tests and their Validity**</h2>
  With Percival and Gregory's examples of Test Driven Design (TDD) architecture approach and the Domain Model, the Django Rest Framework was utilized to build the module outline and chosen "monolith." The TDD iterative cycle, Fail - Pass - Refactor, was not met across the board for all of my tests. Fail, fail, fail may be more accurate with my instances, but the concept of what should be tested holds merit.
 
-<span style='color: 4EC8AE;'>User</span>:
+<span style='color: 4EC8AE;'>User</span>: This testing is intended to verify user account creation and authentication.
 
-<span style='color: 4EC8AE;'>EMData</span>:
+<span style='color: 4EC8AE;'>EMData</span>: This testing is intended to validate data from an post to the em_data.csv with defined parameters. 
 
-<span style='color: 4EC8AE;'>LatLongPoints, FakePlotting, Mapping</span>: The testing is intended to verify scatterplot points are populating on the graph/map with accuracy. In hindsight I would combine LatLongPoints, FakePlotting, and Mapping into one class. There ended up being superfluous redundancy between these classes.
+<span style='color: 4EC8AE;'>LatLongPoints, FakePlotting, Mapping</span>: This testing is intended to verify scatterplot points are populating on the graph/map with accuracy. In hindsight I would combine LatLongPoints, FakePlotting, and Mapping into one class. There ended up being superfluous redundancy between these classes.
 
-<span style='color: 4EC8AE;'>Colors</span>:
+<span style='color: 4EC8AE;'>Colors</span>: This testing is intended to verify RGB and Hex Colors are able to be accessed from the dictionary of available colors.  It also asserts false values to fail the test.
 
-<span style='color: 4EC8AE;'>FrequencyDevice</span>:
+<span style='color: 4EC8AE;'>FrequencyDevice</span>: This testing is intended to validate based on a range of mHz frequencies a known type of device is identified. 30-90mHz = FM Radio, 225-512mHz = Tactical Satellite Radio, 950-2150mHz = Joint Capabilities Release (AKA Blue Force Tracker), 2150+mHz = WiFi puck.
 
-<span style='color: 4EC8AE;'>DataConversion</span>:
+<span style='color: 4EC8AE;'>DataConversion</span>: This testing is intended to verify the conversion of data from csv to json and vice versa.
 
 <span style='color: 4EC8AE;'>DateTime</span>: This testing is intended to fail by asserting a timestamp in the past is equal to now. Date and ime are such pure information and import accessors that testing in this area is probably unnecessary.
 
-<span style='color: 4EC8AE;'>Layout</span>:
+<span style='color: 4EC8AE;'>Layout</span>: This testing is intended to verify the plotting diagram layout parameters match the given range.
 
 ### <h2 id="Coding-Route">**Coding Route Taken**</h2>
 I found the following pattern of coding by python module to be the most efficient; however, I acknowledge not every Unit of Work needs representation on all modules.
