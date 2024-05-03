@@ -15,6 +15,7 @@ Electromagnetic (EM) planning tool taking anticipated military electronics equip
 
 This module allows users to plot EM emissions Latitude and Longitude grids onto maps.
 ***
+### **<ins>The CIDM 6330 Domain Model Challenge</ins>:**
 ### **Django-Choices and Mods to the Model**
  1) Django Rest Framework for API
  2) Django Channels for the External Message Queue
@@ -29,7 +30,6 @@ This module allows users to plot EM emissions Latitude and Longitude grids onto 
  ![alt text](<outside_scope/png/9 steps.png>)
  Image 1: Dr. Babb's Workflow of Percival and Gregory's Domain Model
  ***
-
 
 ### **Diagram Sketches**
 The notion of the EM Planning Software provided a baseline to conceptualize sketching Unified Modeling Language (UML) Diagrams.
@@ -77,8 +77,57 @@ The UML diagrams provided context to perceive potential tests.  My intial list o
   * Mapping
   * Layout
 
- With Percival and Gregory's examples of Test Driven Design (TDD) architecture approach, I 
+ With Percival and Gregory's examples of Test Driven Design (TDD) architecture approach and the Domain Model, the Django Rest Framework was utilized to build the module outline and chosen "monolith." The TDD iterative cycle, Fail - Pass - Refactor, was not met across the board for all of my tests. Fail, fail, fail may be more accurate with my instances, but the concept of what should be tested holds merit.
+
+<ins>User</ins>:
+
+<ins>EMData</ins>:
+
+<ins>LatLongPoints</ins>:
+
+<ins>Colors</ins>:
+
+<ins>FrequencyDevice</ins>:
+
+<ins>DataConversion</ins>:
+
+<ins>DateTime</ins>:
+
+<ins>FakePlotting</ins>:
+
+<ins>Mapping</ins>:
+
+<ins>Layout</ins>:
 ***
+### **Coding Route Taken**
+I found the following pattern of coding by python module to be the most efficient; however, I acknowledge not every Unit of Work needs representation on all modules.
+
+<ins>dj_em_planning</ins>: <br>urls &rarr; settings &rarr; asgi &rarr; asgi</br>
+
+<ins>em_planning_arch</ins>: <br>apps &rarr; domain/model &rarr; services/commands</br>
+
+<ins>em_planning_api</ins>: <br>urls &rarr; models &rarr; serializers &rarr; views &rarr; admin &rarr; apps &rarr; consumers &rarr; permissions &rarr; signals &rarr; tests</br>
+
+I recognize TDD is meant to build tests
+
+### **Encountered Pitfalls**
+ * Scope creep
+ * Writing too many tests at once
+ * Writing unecessary tests
+    * Imported accessors
+ * Coding &rarr; Problem encountered &rarr; 2 hours of researching documentation &rarr; Problem fixed &rarr; Forgot coding direction
+
+![Coding Cycle](https://i.pinimg.com/originals/34/24/d5/3424d5afdedbed4812296777c8154ab6.jpg)
+[Image 6][Cycle]: The Never Ending Cycle of Coding
+***
+### **Exciting Relevation**
+The more coding I created and problems I resolved the more my mind began to retain the coding language.
+
+![Coding Architecture](https://cdn.quotesgram.com/img/35/43/1470817928-matrix-hallway.jpg)
+[Image 7][Matrix]: Matrix Code Architecture Hallway
+
+***
+
 ### **Problem Overview**
 The past twenty years of warfare has focused on Counterinsurgency (COIN) operations with adversaries that did not have the same capabilities.  The lessons learned and best practices from this asymmetric warfare serve as the foundation for the next phase of anticipated conflict.  The US Army has accepted Large Scale Combat Operations (LSCO) as the methodology of conflict with near-peer adversaries such as Russia or China.  As the world watches the on-going LSCO in Ukraine, warfighting lessons become apparent to all echelons of our servicemembers….and our adversaries.  The way we fought in Afghanistan and Iraq for COIN will not work for LSCO.
 
@@ -90,14 +139,11 @@ The process of military acquisitions is slow.  Years even.  If the threat of nea
 
 ***
 ![EM Example from NTC](https://www.thedrive.com/content/2020/05/electronic-warfare-top.jpg?quality=85&auto=webp&optimize=high&crop=16%3A9&auto=webp&optimize=high&quality=70&width=1920)
-[Image 6][EM Image]: Battalion Main Command Post Large Electromagnetic Signature
+[Image 8][EM Image]: Battalion Main Command Post Large Electromagnetic Signature
 ***
 ### **Domain**
 The domain is mission analysis and military decision making process forecasting for survivability utilizing the Electromagnetic Spectrum detection avoidance measures.
-### **Professional Interest**
-I am a US Army Signal Officer (communications), and this proposed tool offers preventative risk to force acceptance.  I am in a position where I see a different Brigades in a tough and realistic LSCO training environment monthly.  EM detection and the enemy's ability to rapidly engage with indirect fires is a recurrent issue where feasible solutions do not align with acceptable solutions.
-### **Prototype Proposal**
-My proposed prototype will be a rudementary forecasting tool utilizing publicly accessable satellite imagery, overlay graphics input representing EM emissions, and reference data tables on EM emissions and detection capabilities.  The prototype is not meant to be a solution to the problem, rather a fundamental approach to propose development for existing military systems incorporation. 
+
 ***
 ### **References**
 1. Image 1: Dr. Babb's Workflow of Percival and Gregory's Domain Model. CIDM 6330 Slides: <ins>CIDM6330-MessagesQueues</ins>. Slide 23.
@@ -105,7 +151,12 @@ My proposed prototype will be a rudementary forecasting tool utilizing publicly 
 3. Image 3: Assignment 3 Activity Diagram UML.
 4. Image 4: Assignment 3 Sequence Diagram UML.
 5. Image 5: Assignment 3 Use Case Diagram UML.
-6. [Image 6][EM Image]: ["This is What Ground Forces Look Like to an Electronic Warfare System and Why It's a Big Deal" by Joseph Trevithick](https://www.thedrive.com/the-war-zone/33401/this-is-what-ground-forces-look-like-to-an-electronic-warfare-system-and-why-its-a-big-deal)
-7. ["Preparing for Large-Scale Combat Operations" by Center for Army Lessons Learned](https://api.army.mil/e2/c/downloads/2023/01/31/73b50bab/21-6-preparing-for-lsco-public.pdf)
+6. [Image 6][Cycle]: ["The Vicious Cycle of Coding"](https://i.pinimg.com/originals/34/24/d5/3424d5afdedbed4812296777c8154ab6.jpg)
+7. [Image 7][Matrix]: ["Matrix Code Architecture Hallway"](https://cdn.quotesgram.com/img/35/43/1470817928-matrix-hallway.jpg)
+8. [Image 8][EM Image]: ["This is What Ground Forces Look Like to an Electronic Warfare System and Why It's a Big Deal" by Joseph Trevithick](https://www.thedrive.com/the-war-zone/33401/this-is-what-ground-forces-look-like-to-an-electronic-warfare-system-and-why-its-a-big-deal)
+9. ["Preparing for Large-Scale Combat Operations" by Center for Army Lessons Learned](https://api.army.mil/e2/c/downloads/2023/01/31/73b50bab/21-6-preparing-for-lsco-public.pdf)
+
+[Cycle]: https://i.pinimg.com/originals/34/24/d5/3424d5afdedbed4812296777c8154ab6.jpg
+[Matrix]: https://cdn.quotesgram.com/img/35/43/1470817928-matrix-hallway.jpg
 
 [EM Image]: https://www.thedrive.com/the-war-zone/33401/this-is-what-ground-forces-look-like-to-an-electronic-warfare-system-and-why-its-a-big-deal
