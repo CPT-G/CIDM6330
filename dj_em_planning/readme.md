@@ -41,10 +41,11 @@ This module allows users to plot EM emissions Latitude and Longitude grids onto 
  7) Don't fight the monolith, will not implement
  8) Redis
  9) Domain intact
-
+***
  ![alt text](<outside_scope/png/9 steps.png>)
- Image 1: Dr. Babb's Workflow of Percival and Gregory's Domain Model
 
+ Image 1: Dr. Babb's Workflow of Percival and Gregory's Domain Model
+***
 ### <h2 id="Diagram-Sketches">**Diagram Sketches**</h2>
 The notion of the EM Planning Software provided a baseline to conceptualize sketching Unified Modeling Language (UML) Diagrams.
 
@@ -52,27 +53,31 @@ The notion of the EM Planning Software provided a baseline to conceptualize sket
 This diagram examines the relationships between the military commander, EM emission sensor data collection Soldier, data messaging, database writing/reading, and map point plotting.  Although rudimentary, the thought experiment created a foundation to build the real life event sensory effect into a visualization tool for the commander to make informed decisions.
 ***
 ![alt text](<outside_scope/png/Class Diagram.drawio.png>)
- Image 2: Assignment 3 Class Diagram UML
 
+Image 2: Assignment 3 Class Diagram UML
+***
 #### **`Activity Diagram`**
 This diagram surveys the flow of commander's intent to Solder and equipment actions creating sensed data for analysis and digestion.  Ultimately driving visual data into the Common Operating Picture for decision making.
 ***
 ![alt text](<outside_scope/png/Activity Diagram.drawio.png>)
- Image 3: Assignment 3 Activity Diagram UML
 
+Image 3: Assignment 3 Activity Diagram UML
+***
 #### **`Sequence Diagram`**
 This diagram outlines the progression of doctrine generating workflow and directing military decision-making process by organization's staff officers. The sequence of events triggers our EM Planning Tool's use for future operations planning.
 ***
 ![alt text](<outside_scope/png/Sequence Diagram.drawio.png>)
- Image 4: Assignment 3 Sequence Diagram UML
 
+Image 4: Assignment 3 Sequence Diagram UML
+***
 #### **`Use Case Diagram`**
 This diagram depicts equipment transmitting EM emissions being captured by EM sensor equipment, the Soldier repsonsible for that data processing and fighting prouduct creation, and the commander who drives resource allocation.
 ***
 ![alt text](<outside_scope/png/Use Case Diagram.drawio.png>)
- Image 5: Assignment 3 Use Class Diagram UML
 
-### <h2 id="TDD-Approach">**TDD Approach Used**</h2>
+Image 5: Assignment 3 Use Class Diagram UML
+***
+### <h2 id="TDD-Approach">**Test Driven Development (TDD) Approach Used**</h2>
 The UML diagrams provided context to perceive potential tests.  My intial list of testing ideas held throughout development with evolution and grouping occuring naturally. 
 
 ### <ins>Initial testing method ideas</ins>:
@@ -118,7 +123,7 @@ The UML diagrams provided context to perceive potential tests.  My intial list o
 | `test_spines_axes_positions` |
 
 ### <h2 id="Exploring-Tests">**Exploring Tests and their Validity**</h2>
- With Percival and Gregory's examples of Test Driven Design (TDD) architecture approach and the Domain Model, the Django Rest Framework was utilized to build the module outline and chosen "monolith." The TDD iterative cycle, Fail - Pass - Refactor, was not met across the board for all of my tests. Fail, fail, fail may be more accurate with my instances, but the concept of what should be tested holds merit.
+ With Percival and Gregory's examples of TDD architecture approach and the Domain Model, the Django Rest Framework was utilized to build the module outline and chosen "monolith" of Django. The TDD iterative cycle, `Fail - Pass - Refactor`, was not met across the board for all of my tests. Fail, fail, fail may be more accurate with my instances, but the concept of what should be tested holds merit.
 
 <span style='color: 4EC8AE;'>User</span>: This testing is intended to verify user account creation and authentication.
 
@@ -166,15 +171,17 @@ These module classes were in place on models prior to being imported into serial
 When coding, I find the struggle to be real. I don't shy away from the challenge of learning this new language and best practices for architecture and design. The repititions and what feels like blunt force trauma has a lasting effect on improvement.
 ***
 ![Coding Cycle](https://i.pinimg.com/originals/34/24/d5/3424d5afdedbed4812296777c8154ab6.jpg)
-[Image 6][Cycle]: The Never Ending Cycle of Coding
 
+[Image 6][Cycle]: The Never Ending Cycle of Coding
+***
 ### <h2 id="Exciting-Revelation">**Exciting Revelation**</h2>
 
 The more code I created and problems I resolved the more my mind began to retain the coding language. Several times I went to bed after hours of struggling on a particular problem. My subconscious would work the issues and on a few instances the problems would enter my dreams. More often than not, I woke up with a solution (or another iteration of attempted solution). I can say with certainty I will never be on the level of Neo from the Matrix, but I recognize the progress.
 ***
 ![Coding Architecture](https://cdn.quotesgram.com/img/35/43/1470817928-matrix-hallway.jpg)
-[Image 7][Matrix]: Matrix Code Architecture Hallway
 
+[Image 7][Matrix]: Matrix Code Architecture Hallway
+***
 ### <h2 id="Problem-Overview">**Problem Overview**</h2>
 The past twenty years of warfare has focused on Counterinsurgency (COIN) operations with adversaries that did not have the same capabilities.  The lessons learned and best practices from this asymmetric warfare serve as the foundation for the next phase of anticipated conflict.  The US Army has accepted Large Scale Combat Operations (LSCO) as the methodology of conflict with near-peer adversaries such as Russia or China.  As the world watches the on-going LSCO in Ukraine, warfighting lessons become apparent to all echelons of our servicemembers….and our adversaries.  The way we fought in Afghanistan and Iraq for COIN will not work for LSCO.
 
@@ -186,8 +193,9 @@ The process of military acquisitions is slow.  Years even.  If the threat of nea
 
 ***
 ![EM Example from NTC](https://www.thedrive.com/content/2020/05/electronic-warfare-top.jpg?quality=85&auto=webp&optimize=high&crop=16%3A9&auto=webp&optimize=high&quality=70&width=1920)
-[Image 8][EM Image]: Battalion Main Command Post Large Electromagnetic Signature
 
+[Image 8][EM Image]: Battalion Main Command Post Large Electromagnetic Signature
+***
 ### <h2 id="References">**References**</h2>
 1. Image 1: Dr. Babb's Workflow of Percival and Gregory's Domain Model. CIDM 6330 Slides: <ins>CIDM6330-MessagesQueues</ins>. Slide 23.
 2. Image 2: Assignment 3 Class Diagram UML.
