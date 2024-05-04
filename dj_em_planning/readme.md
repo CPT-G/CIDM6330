@@ -20,13 +20,13 @@ Josh Ganatta
 How do Battalion Main Command Posts evolve to be mobile, redundant, and survivable with existing equipment on hand while avoiding advanced enemy electromagnetic target acquisition?
 
 ### <h2 id="Domain">**Domain**</h2>
-The domain is mission analysis and military decision making process forecasting for survivability utilizing the Electromagnetic Spectrum detection avoidance measures.
+The domain is mission analysis and military decision-making process forecasting for survivability utilizing the Electromagnetic Spectrum detection avoidance measures.
 ### <h2 id="Software-Solution">**Software Solution**</h2>
 Electromagnetic (EM) planning tool taking anticipated military electronics equipment to be utilized as input and provides EM signature output for planning purposes and course of action development.
  * Military Equipment EM Emissions - ***`Partially accomplished (database)`***
  * Satellite Imagery Overlay - ***`Not accomplished`***
  * Location Grid Input - ***`Accomplished`***
- * Equipment EM Emmision Diameter - ***`Not accomplished`***
+ * Equipment EM Emision Diameter - ***`Not accomplished`***
  * Enemy EM Emissions Detection Parameters - ***`Not accomplished`***
 
 This module allows users to plot EM emissions Latitude and Longitude grids onto maps.
@@ -35,7 +35,7 @@ This module allows users to plot EM emissions Latitude and Longitude grids onto 
  1) Django Rest Framework for API
  2) Django Channels for the External Message Queue
  3) Django does its own bootstrapping and we'll partially forego DI
- 4) Django Signals for the Interal Message Queue
+ 4) Django Signals for the Internal Message Queue
  5) Django apps use views to provide these handlers
  6) Django ORM transactions handle this
  7) Don't fight the monolith, will not implement
@@ -50,7 +50,7 @@ This module allows users to plot EM emissions Latitude and Longitude grids onto 
 The notion of the EM Planning Software provided a baseline to conceptualize sketching Unified Modeling Language (UML) Diagrams.
 
 #### **`Class Diagram`**
-This diagram examines the relationships between the military commander, EM emission sensor data collection Soldier, data messaging, database writing/reading, and map point plotting.  Although rudimentary, the thought experiment created a foundation to build the real life event sensory effect into a visualization tool for the commander to make informed decisions.
+This diagram examines the relationships between the military commander, EM emission sensor data collection Soldier, data messaging, database writing/reading, and map point plotting.  Although rudimentary, the thought experiment created a foundation to build the real-life event sensory effect into a visualization tool for the commander to make informed decisions.
 
 ![alt text](<outside_scope/png/Class Diagram.drawio.png>)
 
@@ -71,14 +71,14 @@ This diagram outlines the progression of doctrine generating workflow and direct
 Image 4: Assignment 3 Sequence Diagram UML
 ***
 #### **`Use Case Diagram`**
-This diagram depicts equipment transmitting EM emissions being captured by EM sensor equipment, the Soldier repsonsible for that data processing and fighting prouduct creation, and the commander who drives resource allocation.
+This diagram depicts equipment transmitting EM emissions being captured by EM sensor equipment, the Soldier responsible for that data processing and fighting product creation, and the commander who drives resource allocation.
 
 ![alt text](<outside_scope/png/Use Case Diagram.drawio.png>)
 
 Image 5: Assignment 3 Use Class Diagram UML
 ***
 ### <h2 id="TDD-Approach">**Test Driven Development (TDD) Approach Used**</h2>
-The UML diagrams provided context to perceive potential tests.  My intial list of testing ideas held throughout development with evolution and grouping occuring naturally. 
+The UML diagrams provided context to perceive potential tests.  My initial list of testing ideas held throughout development with evolution and grouping occurring naturally. 
 
 ### <ins>Initial testing method ideas</ins>:
  * Latitude / Longitude grid point off map / outlier
@@ -129,7 +129,7 @@ The UML diagrams provided context to perceive potential tests.  My intial list o
 
 <span style='color: 4EC8AE;'>EMData</span>: This testing is intended to validate data from an post to the em_data.csv with defined parameters. 
 
-<span style='color: 4EC8AE;'>LatLongPoints, FakePlotting, Mapping</span>: This testing is intended to verify scatterplot points are populating on the graph/map with accuracy. In hindsight I would combine LatLongPoints, FakePlotting, and Mapping into one class. There ended up being superfluous redundancy between these classes.
+<span style='color: 4EC8AE;'>LatLongPoints, FakePlotting, Mapping</span>: This testing is intended to verify scatterplot points are populating on the graph/map with accuracy. In hindsight I would combine LatLongPoints, FakePlotting, and Mapping into one class. There ended up being superfluous redundancies between these classes.
 
 <span style='color: 4EC8AE;'>Colors</span>: This testing is intended to verify RGB and Hex Colors are able to be accessed from the dictionary of available colors.  It also asserts false values to fail the test.
 
@@ -137,7 +137,7 @@ The UML diagrams provided context to perceive potential tests.  My intial list o
 
 <span style='color: 4EC8AE;'>DataConversion</span>: This testing is intended to verify the conversion of data from csv to json and vice versa.
 
-<span style='color: 4EC8AE;'>DateTime</span>: This testing is intended to fail by asserting a timestamp in the past is equal to now. Date and ime are such pure information and import accessors that testing in this area is probably unnecessary.
+<span style='color: 4EC8AE;'>DateTime</span>: This testing is intended to fail by asserting a timestamp in the past is equal to now. Date and time are such pure information and import accessors that testing in this area is probably unnecessary.
 
 <span style='color: 4EC8AE;'>Layout</span>: This testing is intended to verify the plotting diagram layout parameters match the given range.
 
@@ -150,7 +150,7 @@ I found the following pattern of coding by python module to be the most efficien
 
 <ins>em_planning_api</ins>: <br>`urls` &rarr; `models` &rarr; `serializers` &rarr; `views` &rarr; `admin` &rarr; `apps` &darr;</br>&darr; &nbsp; &nbsp; &nbsp; &larr; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &larr; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &larr; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &larr; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &larr; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &larr; <br>&rarr; `consumers` &rarr; `permissions` &rarr; `signals` &rarr; `tests`
 
-I recognize TDD is meant to build tests first. I took this as build tests prior to diving in application development. I did not see a way forward to test building without running through the urls, models, serializers, and views modules. These core modules that the Django Rest Framework autopopulates are interdependent and import sections of each other for testing.
+I recognize TDD is meant to build tests first. I took this as build tests prior to diving in application development. I did not see a way forward to test building without running through the urls, models, serializers, and views modules. These core modules that the Django Rest Framework auto populates are interdependent and import sections of each other for testing.
 
 <ins>For example</ins>:
 
@@ -168,7 +168,7 @@ These module classes were in place on models prior to being imported into serial
     * Imported accessors
  * Coding &rarr; Problem encountered &rarr; 2 hours of researching documentation &rarr; Problem fixed &rarr; Forgot coding direction
 
-When coding, I find the struggle to be real. I don't shy away from the challenge of learning this new language and best practices for architecture and design. The repititions and what feels like blunt force trauma has a lasting effect on improvement.
+When coding, I find the struggle to be real. I don't shy away from the challenge of learning this new language and best practices for architecture and design. The repetitions and what feels like blunt force trauma has a lasting effect on improvement.
 
 ![Coding Cycle](https://i.pinimg.com/originals/34/24/d5/3424d5afdedbed4812296777c8154ab6.jpg)
 
@@ -176,7 +176,7 @@ When coding, I find the struggle to be real. I don't shy away from the challenge
 ***
 ### <h2 id="Exciting-Revelation">**Exciting Revelation**</h2>
 
-The more code I created and problems I resolved the more my mind began to retain the coding language. Several times I went to bed after hours of struggling on a particular problem. My subconscious would work the issues and on a few instances the problems would enter my dreams. More often than not, I woke up with a solution (or another iteration of attempted solution). I can say with certainty I will never be on the level of Neo from the Matrix, but I recognize the progress.
+The more code I created and problems I resolved the more my mind began to retain the coding language. Several times I went to bed after hours of struggling with a particular problem. My subconscious would work the issues and on a few instances the problems would enter my dreams. More often than not, I woke up with a solution (or another iteration of attempted solution). I can say with certainty I will never be on the level of Neo from the Matrix, but I recognize the progress.
 
 ![Coding Architecture](https://cdn.quotesgram.com/img/35/43/1470817928-matrix-hallway.jpg)
 
