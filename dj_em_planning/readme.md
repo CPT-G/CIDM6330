@@ -1,5 +1,5 @@
 ***
-Josh Ganatta
+CPT G
 ***
 # <p style="text-align: center;">**Electromagnetic Spectrum Emissions Planning Tool for Large Scale Combat Operations**</p>
 ### <h2>**Table of Contents**</h2>
